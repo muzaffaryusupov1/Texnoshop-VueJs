@@ -1,5 +1,5 @@
 <template>
-	<section class="my-6">
+	<section class="my-6 max-md:my-3">
 		<div class="container">
 			<div
 				role="status"

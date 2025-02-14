@@ -26,33 +26,71 @@
 			</div>
 
 			<div v-else>
-				<div>
+				<div class="mb-5">
 					<h1 class="font-semibold text-xl leading-[140%] tracking-[-0.01em] text-black">
 						Recommendation
 					</h1>
 				</div>
-				<div
-					class="mt-5 flex items-center gap-6 overflow-x-scroll scroll"
+
+				<swiper
 					v-if="categoryId.category?.id"
+					:slidesPerView="5"
+					:space-between="20"
+					:breakpoints="swiperOptions.breakpoints"
+					:navigation="true"
+					:modules="modules"
+					class="mySwiper"
 				>
-					<RouterLink
+					<swiper-slide
 						v-for="item in recommended"
-						:to="`/product/${item.slug}`"
 						:key="item.id"
 						class="bg-white border border-solid border-gray-300 shadow-lg shadow-shadow-cc relative rounded-xl"
 					>
-						<Cart :cart="item" />
-					</RouterLink>
-				</div>
-				<div v-else>IIIIIIIIIIIIIOOOOOOOOOOOOOOOOUUUUUUUUUU</div>
+						<RouterLink :to="`/product/${item.slug}`">
+							<Cart :cart="item" />
+						</RouterLink>
+					</swiper-slide>
+				</swiper>
+
+				<div v-else>Mahsulot topilmadi</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
+import 'swiper/css'
+import 'swiper/css/navigation'
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import { mapState } from 'vuex'
 
 export default {
+	components: { Swiper, SwiperSlide },
+	data() {
+		return {
+			swiperOptions: {
+				breakpoints: {
+					0: {
+						slidesPerView: 2,
+						spaceBetween: 20,
+					},
+					768: {
+						slidesPerView: 3,
+						spaceBetween: 30,
+					},
+					1000: {
+						slidesPerView: 4,
+						spaceBetween: 40,
+					},
+
+					1200: {
+						slidesPerView: 5,
+						spaceBetween: 30,
+					},
+				},
+			},
+		}
+	},
 	props: {
 		categoryId: {
 			type: Object,
@@ -67,6 +105,11 @@ export default {
 	},
 	mounted() {
 		this.$store.dispatch('recommendedProducts', this.categoryId.category?.id)
+	},
+	setup() {
+		return {
+			modules: [Navigation],
+		}
 	},
 }
 </script>

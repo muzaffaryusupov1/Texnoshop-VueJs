@@ -18,13 +18,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
-	computed: {
-		...mapState({
-			categories: state => state.categories.categories,
-		}),
+	props: {
+		categories: {
+			type: Object,
+			required: true,
+		},
 	},
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
-	<div class="py-4 px-5 h-[380px] max-[500px]:h-full flex flex-col justify-between">
-		<div
-			class="max-[640px]:py-1 py-2 max-[640px]:px-2 px-4 max-[640px]:mb-2 mb-5 max-[500px]:w-[150px] max-[420px]:w-[120px] max-[500px]:h-[150px] w-[200px] h-[190px]"
-		>
+	<div
+		class="py-4 px-5 h-[380px] max-[500px]:h-[300px] flex flex-col justify-between max-md:py-3 max-md:px-4 max-sm:py-2 max-sm:px-3"
+	>
+		<div class="max-[640px]:py-1 py-2 max-[640px]:px-2 px-4 max-[640px]:mb-2 mb-5 w-full h-[200px]">
 			<img :src="cart.mainImage" alt="image" class="w-full h-full object-contain" />
 		</div>
 		<div>

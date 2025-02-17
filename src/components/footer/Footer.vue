@@ -1,5 +1,5 @@
 <template>
-	<footer class="border-b-[1px] pt-10 max-md:pt-7 max-sm:pt-3">
+	<footer class="border-b-[1px] pt-10 max-md:pt-7 max-sm:pt-3 mt-7 max-sm:mt-5">
 		<div class="container">
 			<div class="flex justify-between mb-10 max-lg:mb-7 max-md:mb-4 max-sm:flex-col">
 				<div class="w-[276px] flex flex-col gap-[15px] max-md:gap-2 max-sm:w-full">
@@ -21,7 +21,7 @@
 				<div
 					class="grid grid-cols-4 gap-14 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-8 max-sm:grid-cols-2 max-sm:my-3"
 				>
-					<div class="flex flex-col gap-[6px] max-sm:gap-1" v-for="link in list">
+					<div class="flex flex-col gap-[6px] max-sm:gap-1" v-for="link in list" :key="link.id">
 						<h3 class="font-medium text-base text-black mb-[10px] max-sm:mb-2 max-sm:text-sm">
 							{{ link.title }}
 						</h3>

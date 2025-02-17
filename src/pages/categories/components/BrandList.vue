@@ -9,18 +9,62 @@
 			</span>
 		</div>
 		<form>
-			<div className="flex items-center pt-[5px] mb-[10px]">
+			<div
+				className="flex items-center pt-[5px] mb-[10px]"
+				v-for="item in readMore ? brands : brands?.slice(0, 4)"
+				:key="item.id"
+			>
 				<input
 					type="checkbox"
-					id="form__item1"
+					:id="item.id"
 					className="mr-[6px] border-2 border-solid border-gray-smoke rounded-md w-5 h-5"
 				/>
-				<label htmlFor="form__item1" className="font-normal text-base text-black">{title}</label>
+				<label
+					:for="item.id"
+					className="font-normal text-base text-black select-none cursor-pointer"
+					>{{ item.title }}</label
+				>
+			</div>
+			<div class="mt-5 max-w-48">
+				<button
+					@click="showLess"
+					v-if="readMore"
+					class="bg-primary py-1 px-3 rounded-md text-base text-white text-center font-normal w-full"
+				>
+					Kamroq
+				</button>
+				<button
+					@click="showMore"
+					v-if="!readMore"
+					class="bg-primary py-1 px-3 rounded-md text-base text-white text-center font-normal w-full"
+				>
+					Ko'proq
+				</button>
 			</div>
 		</form>
 	</div>
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+	data() {
+		return {
+			readMore: false,
+		}
+	},
+	computed: {
+		...mapState({
+			brands: state => state.categories.brands,
+		}),
+	},
+	methods: {
+		showMore() {
+			this.readMore = true
+		},
+		showLess() {
+			this.readMore = false
+		},
+	},
+}
 </script>

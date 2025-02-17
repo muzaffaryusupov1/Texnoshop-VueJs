@@ -1,3 +1,4 @@
+import { brandsList } from '@/utils/urls'
 import axios from './axios'
 
 const CategoriesService = {
@@ -6,6 +7,9 @@ const CategoriesService = {
 	},
 	categoryProducts(id) {
 		return axios.get(`/products?category_id=${id}`)
+	},
+	brands() {
+		return axios.get(brandsList)
 	},
 }
 

@@ -5,6 +5,7 @@ const state = {
 	isLoading: null,
 	error: null,
 	products: null,
+	brands: null,
 }
 
 const mutations = {
@@ -32,6 +33,18 @@ const mutations = {
 	getCategoryProductsFailure(state) {
 		state.isLoading = false
 	},
+	getBrandsStart(state) {
+		state.isLoading = true
+		state.brands = null
+		state.error = null
+	},
+	getBrandsSuccess(state, payload) {
+		state.isLoading = false
+		state.brands = payload
+	},
+	getBrandsFailure(state) {
+		state.isLoading = false
+	},
 }
 
 const actions = {
@@ -55,6 +68,17 @@ const actions = {
 					resolve(response.data)
 				})
 				.catch(() => context.commit('getCategoryProductsFailure'))
+		})
+	},
+	brands(context) {
+		return new Promise(resolve => {
+			context.commit('getBrandsStart')
+			CategoriesService.brands()
+				.then(response => {
+					context.commit('getBrandsSuccess', response.data)
+					resolve(response.data)
+				})
+				.catch(() => context.commit('getBrandsFailure'))
 		})
 	},
 }

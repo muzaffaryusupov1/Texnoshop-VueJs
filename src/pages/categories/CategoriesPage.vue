@@ -48,31 +48,33 @@
 					<CategoryItems />
 
 					<div class="flex items-center justify-end gap-[10px]">
-						<select class="w-[172px] py-3 px-2 rounded-md border border-solid border-gray-300">
-							<option class="font-normal text-base text-black">Show 10</option>
+						<select
+							class="w-[172px] py-3 px-2 rounded-md border border-solid border-gray-300 max-[440px]:w-full max-sm:p-1.5"
+						>
+							<option class="font-normal text-base text-black max-sm:text-sm">Show 10</option>
 						</select>
 
-						<div class="flex mr-[10px]">
-							<button class="border border-solid border-gray-300 py-1 px-2">
+						<div class="flex mr-[10px] max-sm:mr-1.5">
+							<button class="border border-solid border-gray-300 py-1 px-2 max-sm:p-1">
 								<ChevronLeftIcon />
 							</button>
 							<span
-								class="border border-solid border-gray-300 py-[9px] px-4 font-medium text-base text-gray-500 bg-gray-400"
+								class="border border-solid border-gray-300 py-[9px] px-4 font-medium text-base text-gray-500 bg-gray-400 max-sm:py-1.5 max-sm:px-2 max-sm:text-sm"
 							>
 								1
 							</span>
 							<span
-								class="border border-solid border-gray-300 py-[9px] px-4 font-medium text-base text-black"
+								class="border border-solid border-gray-300 py-[9px] px-4 font-medium text-base text-black max-sm:py-1.5 max-sm:px-2 max-sm:text-sm"
 							>
 								2
 							</span>
 							<span
-								class="border border-solid border-gray-300 py-[9px] px-4 font-medium text-base text-black"
+								class="border border-solid border-gray-300 py-[9px] px-4 font-medium text-base text-black max-sm:py-1.5 max-sm:px-2 max-sm:text-sm"
 							>
 								3
 							</span>
 
-							<button class="border border-solid border-gray-300 py-1 px-2">
+							<button class="border border-solid border-gray-300 py-1 px-2 max-sm:p-1">
 								<ChevronRightIcon />
 							</button>
 						</div>

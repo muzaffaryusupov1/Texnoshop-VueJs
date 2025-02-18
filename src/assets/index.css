@@ -81,12 +81,6 @@ body,
 	border: 2px solid #555555;
 }
 
-@media screen and (min-width: 768px) {
-	.wrapper {
-		pointer-events: all;
-	}
-}
-
 body:has(.drawer) {
 	overflow: hidden;
 }

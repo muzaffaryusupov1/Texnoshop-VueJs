@@ -8,7 +8,7 @@
 				<ArrowIcon />
 			</span>
 		</div>
-		<form>
+		<form class="max-h-[400px] overflow-y-scroll scroll">
 			<div
 				className="flex items-center pt-[5px] mb-[10px]"
 				v-for="item in readMore ? brands : brands?.slice(0, 4)"
@@ -25,23 +25,10 @@
 					>{{ item.title }}</label
 				>
 			</div>
-			<div class="mt-5 max-w-48">
-				<button
-					@click="showLess"
-					v-if="readMore"
-					class="bg-primary py-1 px-3 rounded-md text-base text-white text-center font-normal w-full"
-				>
-					Kamroq
-				</button>
-				<button
-					@click="showMore"
-					v-if="!readMore"
-					class="bg-primary py-1 px-3 rounded-md text-base text-white text-center font-normal w-full"
-				>
-					Ko'proq
-				</button>
-			</div>
 		</form>
+		<div class="mt-5 max-w-48">
+			<button @click="showToggle">{{ readMore ? 'Less' : 'More' }}</button>
+		</div>
 	</div>
 </template>
 
@@ -59,11 +46,8 @@ export default {
 		}),
 	},
 	methods: {
-		showMore() {
-			this.readMore = true
-		},
-		showLess() {
-			this.readMore = false
+		showToggle() {
+			this.readMore = !this.readMore
 		},
 	},
 }

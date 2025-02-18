@@ -3,8 +3,8 @@
 		<div>
 			<div class="container">
 				<div class="flex items-center justify-between">
-					<div class="flex gap-[18px]">
-						<button class="hidden">
+					<div class="flex">
+						<button @click="toggleModal" class="w-7 h-7 hidden max-sm:block">
 							<MobileIcon />
 						</button>
 						<RouterLink :to="{ name: 'home' }">
@@ -26,7 +26,7 @@
 						</button>
 					</form>
 
-					<div class="hidden sm:flex items-center gap-x-1 md:gap-4 lg:gap-x-6">
+					<div class="flex items-center gap-x-6 max-md:gap-4">
 						<RouterLink :to="{ name: 'signin' }">
 							<button
 								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
@@ -34,7 +34,9 @@
 								<span>
 									<ProfileIcon class="group-hover:fill-primary" />
 								</span>
-								<span class="font-normal text-xs group-hover:text-[#0d6efd]">Sign In</span>
+								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
+									Sign In
+								</span>
 							</button>
 						</RouterLink>
 
@@ -45,18 +47,9 @@
 								<span>
 									<HeartIcon class="group-hover:fill-primary" />
 								</span>
-								<span class="font-normal text-xs group-hover:text-[#0d6efd]">WishList</span>
-							</button>
-						</RouterLink>
-
-						<RouterLink :to="{ name: 'cart' }">
-							<button
-								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
-							>
-								<span>
-									<CartIcon class="group-hover:fill-primary" />
+								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
+									WishList
 								</span>
-								<span class="font-normal text-xs group-hover:text-[#0d6efd]">Cart</span>
 							</button>
 						</RouterLink>
 					</div>
@@ -65,26 +58,6 @@
 						<div v-if="categories === null">Loading...</div>
 						<Modal v-else-if="modal" :categories="categories" :modal="modal" @close="hideModal" />
 					</Teleport>
-
-					<button
-						@click="toggleModal"
-						class="group absolute top-5 right-5 z-[9999999999] w-8 h-8 hidden max-sm:block"
-					>
-						<div class="grid justify-items-center gap-1">
-							<span
-								:class="modal && 'rotate-45 translate-y-2'"
-								class="w-full h-1 rounded-full bg-black transition duration-300"
-							></span>
-							<span
-								:class="modal && 'scale-x-0'"
-								class="w-full h-1 rounded-full bg-black transition duration-300"
-							></span>
-							<span
-								:class="modal && '-rotate-45 -translate-y-2'"
-								class="w-full h-1 rounded-full bg-black transition duration-300"
-							></span>
-						</div>
-					</button>
 				</div>
 			</div>
 		</div>

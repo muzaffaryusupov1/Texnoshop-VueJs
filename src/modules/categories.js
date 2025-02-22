@@ -45,6 +45,18 @@ const mutations = {
 	getBrandsFailure(state) {
 		state.isLoading = false
 	},
+	getProductsBrandsIdStart(state) {
+		state.isLoading = true
+		state.products = null
+		state.error = null
+	},
+	getProductsBrandsIdSuccess(state, payload) {
+		state.isLoading = false
+		state.products = payload
+	},
+	getProductsBrandsIdFailure(state) {
+		state.isLoading = false
+	},
 }
 
 const actions = {
@@ -79,6 +91,17 @@ const actions = {
 					resolve(response.data)
 				})
 				.catch(() => context.commit('getBrandsFailure'))
+		})
+	},
+	productsWithBrandsId(context, arr) {
+		return new Promise(resolve => {
+			context.commit('getProductsBrandsIdStart')
+			CategoriesService.productsFilterWithBrandId(arr)
+				.then(response => {
+					context.commit('getProductsBrandsIdSuccess', response.data)
+					resolve(response.data)
+				})
+				.catch(error => console.log('ERROR', error))
 		})
 	},
 }

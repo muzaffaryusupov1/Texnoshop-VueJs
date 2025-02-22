@@ -4,6 +4,7 @@ import Avatar from './Avatar.vue'
 import BasketIcon from './BasketIcon.vue'
 import BlackRatingIcon from './BlackRatingIcon.vue'
 import CartIcon from './CartIcon.vue'
+import CategoryIcon from './CategoryIcon.vue'
 import ChevronLeftIcon from './ChevronLeftIcon.vue'
 import ChevronRightIcon from './ChevronRightIcon.vue'
 import CloseIcon from './CloseIcon.vue'
@@ -58,4 +59,5 @@ export default [
 	YoutubeIcon,
 	Avatar,
 	HomeIcon,
+	CategoryIcon,
 ]

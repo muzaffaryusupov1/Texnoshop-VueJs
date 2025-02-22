@@ -1,3 +1,4 @@
+import { CategoryMain } from '@/pages/categories/components'
 import {
 	CartViews,
 	CategoryViews,
@@ -28,9 +29,15 @@ const router = createRouter({
 			component: CartViews,
 		},
 		{
-			path: '/category/:id',
+			path: '/category',
 			name: 'category',
 			component: CategoryViews,
+			children: [
+				{
+					path: ':id',
+					component: CategoryMain,
+				},
+			],
 		},
 		{
 			path: '/signin',

@@ -33,9 +33,9 @@
 										<StarIcon class="fill-orange" />
 									</span>
 								</div>
-								<span class="font-normal text-base text-orange max-[870px]:text-sm"
-									>{{ product?.rating }} rating</span
-								>
+								<span class="font-normal text-base text-orange max-[870px]:text-sm">
+									{{ product?.rating }} rating
+								</span>
 							</div>
 						</div>
 
@@ -43,18 +43,18 @@
 							<span class="w-5 h-5">
 								<MessageSmallIcon />
 							</span>
-							<span class="font-normal text-base text-text-gray max-[870px]:text-sm"
-								>{{ product?.reviewCount }} reviews</span
-							>
+							<span class="font-normal text-base text-text-gray max-[870px]:text-sm">
+								{{ product?.reviewCount }} reviews
+							</span>
 						</div>
 
 						<div class="flex items-center gap-x-2 max-[870px]:gap-x-1">
 							<span class="w-5 h-5">
 								<BasketIcon />
 							</span>
-							<span class="font-normal text-base text-text-gray max-[870px]:text-sm"
-								>{{ product?.sold }} sold</span
-							>
+							<span class="font-normal text-base text-text-gray max-[870px]:text-sm">
+								{{ product?.sold }} sold
+							</span>
 						</div>
 					</div>
 

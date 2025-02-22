@@ -22,7 +22,7 @@
 
 		<ProductHeader v-else v-for="products in product" :key="products.id" :product="products" />
 		<TabMenu />
-		<ReleatedItems v-for="categoryId in product" :category-id="categoryId" />
+		<ReleatedItems v-for="categoryId in product" :key="categoryId.id" :category-id="categoryId" />
 	</div>
 </template>
 

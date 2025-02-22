@@ -17,13 +17,16 @@
 				<input
 					type="checkbox"
 					:id="item.id"
+					:checked="filteredList.some(item2 => item2 === item.id)"
+					@change="handleBrand(item.id, $event)"
 					className="mr-[6px] border-2 border-solid border-gray-smoke rounded-md w-5 h-5"
 				/>
 				<label
 					:for="item.id"
 					className="font-normal text-base text-black select-none cursor-pointer"
-					>{{ item.title }}</label
 				>
+					{{ item.title }}
+				</label>
 			</div>
 		</form>
 		<div class="mt-5 max-w-48">
@@ -33,11 +36,14 @@
 </template>
 
 <script>
+import { getIds } from '@/utils/helpers'
 import { mapState } from 'vuex'
 export default {
 	data() {
 		return {
 			readMore: false,
+			params: new URL(window.location.href).searchParams,
+			filteredList: getIds(new URL(window.location.href).searchParams.get('brand_id')),
 		}
 	},
 	computed: {
@@ -48,6 +54,26 @@ export default {
 	methods: {
 		showToggle() {
 			this.readMore = !this.readMore
+		},
+		handleBrand(id, { target }) {
+			if (target.checked) {
+				if (this.params.get('brand_id')) {
+					this.params.set('brand_id', this.params.get('brand_id') + ',' + id)
+					this.$router.push({
+						query: { brand_id: this.params.get('brand_id') + ',' + id },
+					})
+				} else {
+					this.$router.push({ query: { brand_id: id } })
+				}
+			} else {
+				this.$router.push({
+					query: {
+						brand_id: getIds(this.params.get('brand_id'))
+							.filter(item => item !== id)
+							.join(','),
+					},
+				})
+			}
 		},
 	},
 }

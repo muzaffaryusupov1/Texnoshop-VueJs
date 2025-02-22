@@ -56,7 +56,12 @@
 
 					<Teleport to="#modal">
 						<div v-if="categories === null">Loading...</div>
-						<Modal v-else-if="modal" :categories="categories" :modal="modal" @close="hideModal" />
+						<Modal
+							v-else-if="modal"
+							:categories="categories[0]"
+							:modal="modal"
+							@close="hideModal"
+						/>
 					</Teleport>
 				</div>
 			</div>

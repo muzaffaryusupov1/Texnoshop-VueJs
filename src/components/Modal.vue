@@ -30,13 +30,43 @@
 			<div class="p-5">
 				<RouterLink
 					:to="{ name: 'home' }"
-					class="flex items-center gap-2 py-2 px-1"
+					class="flex items-center gap-2 py-2 px-1 mb-3"
 					@click="$emit('close')"
 				>
 					<span>
 						<HomeIcon />
 					</span>
 					<span class="text-base">Home</span>
+				</RouterLink>
+				<RouterLink
+					:to="`/category/${categories.slug}-${categories.id}`"
+					class="flex items-center gap-2 py-2 px-1 mb-3"
+					@click="$emit('close')"
+				>
+					<span>
+						<CategoryIcon />
+					</span>
+					<span class="text-base">Categories</span>
+				</RouterLink>
+				<RouterLink
+					:to="{ name: 'wishlist' }"
+					class="flex items-center gap-2 py-2 px-1 mb-3"
+					@click="$emit('close')"
+				>
+					<span>
+						<HeartIcon />
+					</span>
+					<span class="text-base">Favourites</span>
+				</RouterLink>
+				<RouterLink
+					:to="{ name: 'cart' }"
+					class="flex items-center gap-2 py-2 px-1"
+					@click="$emit('close')"
+				>
+					<span>
+						<CartIcon />
+					</span>
+					<span class="text-base">My Cart</span>
 				</RouterLink>
 			</div>
 		</div>
@@ -48,6 +78,10 @@ export default {
 	props: {
 		modal: {
 			type: Boolean,
+			required: true,
+		},
+		categories: {
+			type: Object,
 			required: true,
 		},
 	},

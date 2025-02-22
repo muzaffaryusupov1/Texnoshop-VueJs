@@ -1,4 +1,4 @@
-import { brandsList } from '@/utils/urls'
+import { brandsList, productsFilter } from '@/utils/urls'
 import axios from './axios'
 
 const CategoriesService = {
@@ -10,6 +10,14 @@ const CategoriesService = {
 	},
 	brands() {
 		return axios.get(brandsList)
+	},
+	productsFilterWithBrandId({ category_id, brand_arr, sortBy }) {
+		return axios.get(productsFilter(brand_arr), {
+			params: {
+				category_id,
+				sortBy: sortBy === 'asc' ? 'price' : sortBy === 'desc' ? '-price' : null,
+			},
+		})
 	},
 }
 

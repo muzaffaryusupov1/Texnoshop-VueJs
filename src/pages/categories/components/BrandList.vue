@@ -58,7 +58,6 @@ export default {
 		handleBrand(id, { target }) {
 			if (target.checked) {
 				if (this.params.get('brand_id')) {
-					this.params.set('brand_id', this.params.get('brand_id') + ',' + id)
 					this.$router.push({
 						query: { brand_id: this.params.get('brand_id') + ',' + id },
 					})

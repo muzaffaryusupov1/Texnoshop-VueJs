@@ -19,7 +19,10 @@
 					>
 						<div class="relative">
 							<div class="flex items-center gap-2 max-[870px]:gap-1">
-								<div class="flex items-center gap-1 max-[870px]:gap-0.5">
+								<div class="flex items-center gap-1 max-[870px]:gap-0.5 max-sm:gap-0">
+									<span class="mb-[2px]">
+										<StarIcon class="fill-orange" />
+									</span>
 									<span class="mb-[2px]">
 										<StarIcon class="fill-orange" />
 									</span>
@@ -33,7 +36,7 @@
 										<StarIcon class="fill-orange" />
 									</span>
 								</div>
-								<span class="font-normal text-base text-orange max-[870px]:text-sm">
+								<span class="font-normal text-base text-orange max-[870px]:text-sm max-sm:text-xs">
 									{{ product?.rating }} rating
 								</span>
 							</div>
@@ -43,7 +46,7 @@
 							<span class="w-5 h-5">
 								<MessageSmallIcon />
 							</span>
-							<span class="font-normal text-base text-text-gray max-[870px]:text-sm">
+							<span class="font-normal text-base text-text-gray max-[870px]:text-sm max-sm:text-xs">
 								{{ product?.reviewCount }} reviews
 							</span>
 						</div>
@@ -52,7 +55,7 @@
 							<span class="w-5 h-5">
 								<BasketIcon />
 							</span>
-							<span class="font-normal text-base text-text-gray max-[870px]:text-sm">
+							<span class="font-normal text-base text-text-gray max-[870px]:text-sm max-sm:text-xs">
 								{{ product?.sold }} sold
 							</span>
 						</div>

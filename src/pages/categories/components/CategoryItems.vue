@@ -25,7 +25,11 @@
 
 	<div
 		class="my-6 max-md:my-4 max-sm:my-2"
-		:class="active ? 'grid grid-cols-4 gap-[10px]' : 'w-full'"
+		:class="
+			active
+				? 'grid grid-cols-4 gap-[10px] max-[1130px]:grid-cols-3 max-[600px]:grid-cols-2'
+				: 'w-full'
+		"
 		v-else
 	>
 		<div
@@ -42,7 +46,7 @@
 			</RouterLink>
 
 			<button
-				class="absolute top-0 right-[-10px] m-5 p-2 border border-solid border-gray-300 rounded-md"
+				class="absolute top-0 right-[-10px] m-5 p-2 border border-solid border-gray-300 rounded-md max-[540px]:hidden"
 			>
 				<HeartIcon />
 			</button>

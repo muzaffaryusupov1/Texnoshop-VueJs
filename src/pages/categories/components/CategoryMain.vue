@@ -1,37 +1,58 @@
 <template>
 	<div class="my-6">
 		<div
-			class="flex items-center justify-between border border-solid border-gray-300 rounded-md py-[22px] px-[19px]"
+			class="flex items-center justify-between border border-solid border-gray-300 rounded-md py-[22px] px-[19px] max-lg:p-4 max-md:py-4 max-md:px-4 max-sm:py-3 max-sm:px-2"
 		>
-			<h2 class="font-normal text-base text-black">
+			<h2 class="font-normal text-base text-black max-md:text-sm max-sm:hidden">
 				{{ products?.length }} items in
 				<span class="font-bold">{{ categories?.find(item => item.id == categoryId)?.title }}</span>
 			</h2>
+			<div>
+				<button
+					class="hidden max-sm:flex items-center py-3 px-2 rounded-md border border-solid border-gray-300 max-md:p-1.5"
+					@click="toggleModal"
+				>
+					Filter
+					<span class="ml-2">
+						<FilterIcon />
+					</span>
+				</button>
+			</div>
 
-			<div class="flex items-center gap-3">
+			<Teleport to="#modal">
+				<CategoryFilterModal v-if="modalFilter" :active="modalFilter" @close="hideModal" />
+			</Teleport>
+
+			<div class="flex items-center gap-3 max-md:gap-1.5">
 				<form class="flex items-center" @submit.prevent>
 					<select
 						name="categories__input"
 						id="select"
-						class="w-[172px] py-3 px-2 rounded-md border border-solid border-gray-300"
+						class="w-[172px] py-3 px-2 rounded-md border border-solid border-gray-300 max-lg:w-[120px] max-md:p-1.5 max-md:w-[100px] max-sm:w-20"
 						@click="handleAsc($event)"
 					>
-						<option value="none" class="font-normal text-base text-black">None</option>
-						<option value="asc" class="font-normal text-base text-black">Cheap</option>
-						<option value="desc" class="font-normal text-base text-black">Expensive</option>
+						<option value="none" class="font-normal text-base text-black max-md:text-sm">
+							None
+						</option>
+						<option value="asc" class="font-normal text-base text-black max-md:text-sm">
+							Cheap
+						</option>
+						<option value="desc" class="font-normal text-base text-black max-md:text-sm">
+							Expensive
+						</option>
 					</select>
 				</form>
 				<div>
 					<button
 						type="button"
-						class="border border-solid border-gray-300 rounded-md p-1 ml-[10px] last:ml-0 mr-2"
+						class="border border-solid border-gray-300 rounded-md p-1 ml-[10px] last:ml-0 mr-2 max-sm:p-0.5 max-sm:mr-1 max-sm:ml-2"
 						:class="active && 'bg-gray-300'"
 						@click="handleChangeView"
 					>
 						<GridViewIcon />
 					</button>
 					<button
-						class="border border-solid border-gray-300 rounded-md p-1 ml-[10px] last:ml-0"
+						class="border border-solid border-gray-300 rounded-md p-1 ml-[10px] last:ml-0 max-sm:p-0.5 max-sm:mr-1 max-sm:ml-2"
 						type="button"
 						:class="!active && 'bg-gray-300'"
 						@click="handleChangeView"
@@ -97,9 +118,10 @@
 import { getIds } from '@/utils/helpers'
 import { mapState } from 'vuex'
 import { CategoryItems } from '.'
+import CategoryFilterModal from './CategoryFilterModal.vue'
 
 export default {
-	components: { CategoryItems },
+	components: { CategoryItems, CategoryFilterModal },
 	data() {
 		return {
 			categoryId: this.$route.params.id.split('-').at(-1),
@@ -108,6 +130,7 @@ export default {
 			sortBy: new URL(window.location.href).searchParams.get('sortBy'),
 			query: this.$route.query,
 			active: true,
+			modalFilter: false,
 		}
 	},
 	computed: {
@@ -135,6 +158,12 @@ export default {
 		},
 		handleChangeView() {
 			this.active = !this.active
+		},
+		toggleModal() {
+			this.modalFilter = !this.modalFilter
+		},
+		hideModal() {
+			this.modalFilter = false
 		},
 	},
 	mounted() {

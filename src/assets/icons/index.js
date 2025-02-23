@@ -12,6 +12,7 @@ import CompanyIcon from './CompanyIcon.vue'
 import DeleteIcon from './DeleteIcon.vue'
 import FacebookIcon from './FacebookIcon.vue'
 import FavouriteIcon from './FavouriteIcon.vue'
+import FilterIcon from './FilterIcon.vue'
 import GridViewIcon from './GridViewIcon.vue'
 import HeartIcon from './HeartIcon.vue'
 import HomeIcon from './HomeIcon.vue'
@@ -60,4 +61,5 @@ export default [
 	Avatar,
 	HomeIcon,
 	CategoryIcon,
+	FilterIcon,
 ]

@@ -18,7 +18,7 @@
 						<input
 							type="text"
 							class="flex-auto h-full px-2 text-base text-black font-normal"
-							placeholder="Search..."
+							placeholder="Qidirish..."
 							id="input-search"
 						/>
 						<button type="submit" aria-label="input-search" title="Search...">
@@ -35,7 +35,7 @@
 									<ProfileIcon class="group-hover:fill-primary" />
 								</span>
 								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
-									Sign In
+									Kirish
 								</span>
 							</button>
 						</RouterLink>
@@ -48,7 +48,7 @@
 									<HeartIcon class="group-hover:fill-primary" />
 								</span>
 								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
-									WishList
+									Saralangan
 								</span>
 							</button>
 						</RouterLink>

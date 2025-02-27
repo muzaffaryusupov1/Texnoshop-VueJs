@@ -27,6 +27,7 @@ import ProfileIcon from './ProfileIcon.vue'
 import RatingIcon from './RatingIcon.vue'
 import SearchIcon from './SearchIcon.vue'
 import StarIcon from './StarIcon.vue'
+import TelegramIcon from './TelegramIcon.vue'
 import TwitterIcon from './TwitterIcon.vue'
 import YoutubeIcon from './YoutubeIcon.vue'
 
@@ -45,7 +46,6 @@ export default [
 	FavouriteIcon,
 	GridViewIcon,
 	HeartIcon,
-	InstagramIcon,
 	ListViewIcon,
 	MessageIcon,
 	MessageSmallIcon,
@@ -62,4 +62,6 @@ export default [
 	HomeIcon,
 	CategoryIcon,
 	FilterIcon,
+	TelegramIcon,
+	InstagramIcon,
 ]

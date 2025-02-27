@@ -28,7 +28,7 @@
 			<div v-else>
 				<div class="mb-5">
 					<h1 class="font-semibold text-xl leading-[140%] tracking-[-0.01em] text-black">
-						Recommendation
+						Tavsiya
 					</h1>
 				</div>
 
@@ -72,7 +72,7 @@ export default {
 				breakpoints: {
 					0: {
 						slidesPerView: 2,
-						spaceBetween: 20,
+						spaceBetween: 10,
 					},
 					768: {
 						slidesPerView: 3,

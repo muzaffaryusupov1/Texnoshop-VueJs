@@ -42,8 +42,8 @@ export default {
 	data() {
 		return {
 			readMore: false,
-			params: new URL(window.location.href).searchParams,
-			filteredList: getIds(new URL(window.location.href).searchParams.get('brand_id')),
+			brand_id: new URL(window.location.href).searchParams.get('brand_id'),
+			filteredList: getIds(this.$route.query.brand_id),
 		}
 	},
 	computed: {
@@ -57,19 +57,20 @@ export default {
 		},
 		handleBrand(id, { target }) {
 			if (target.checked) {
-				if (this.params.get('brand_id')) {
+				if (this.brand_id) {
 					this.$router.push({
-						query: { brand_id: this.params.get('brand_id') + ',' + id },
+						query: { brand_id: id },
+						params: { brand_id: this.brand_id + ',' + id },
 					})
 				} else {
 					this.$router.push({ query: { brand_id: id } })
 				}
+			} else if (target.checked == false) {
+				this.$router.push({ query: { brand_id: '' } })
 			} else {
 				this.$router.push({
 					query: {
-						brand_id: getIds(this.params.get('brand_id'))
-							.filter(item => item !== id)
-							.join(','),
+						brand_id: this.brand_id.filter(item => item !== id).join(','),
 					},
 				})
 			}

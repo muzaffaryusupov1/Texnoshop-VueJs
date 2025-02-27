@@ -9,14 +9,27 @@
 						<img src="/images/logo.png" alt="site logo" class="w-40 h-12 max-sm:w-28 max-sm:h-8" />
 					</RouterLink>
 					<p class="font-normal text-base tracking-[-0.001em] text-gray-600 max-sm:text-xs">
-						Best information about the company gies here but now lorem ipsum is
+						Bu saytni men portfolio uchun ishlab chiqdim va bu saytda men mahsulotlarni sotmayman.
 					</p>
-					<div class="flex gap-[11px] max-sm:gap-2">
-						<RouterLink :to="{ name: 'home' }"><FacebookIcon /></RouterLink>
-						<RouterLink :to="{ name: 'home' }"><TwitterIcon /></RouterLink>
-						<RouterLink :to="{ name: 'home' }"><CompanyIcon /></RouterLink>
-						<RouterLink :to="{ name: 'home' }"><InstagramIcon /></RouterLink>
-						<RouterLink :to="{ name: 'home' }"><YoutubeIcon /></RouterLink>
+					<div class="flex items-center gap-[11px] max-sm:gap-2">
+						<a
+							href="https://www.instagram.com/muraxpp/"
+							target="_blank"
+							class="p-2 border rounded-full bg-shadow-cc border-transparent"
+							><InstagramIcon
+						/></a>
+						<a
+							href="https://t.me/mysticmura"
+							target="_blank"
+							class="p-2 border rounded-full bg-shadow-cc border-transparent"
+							><TelegramIcon
+						/></a>
+						<a
+							href="https://www.youtube.com/@muraxpp"
+							target="_blank"
+							class="p-2 border rounded-full bg-shadow-cc border-transparent"
+							><YoutubeIcon
+						/></a>
 					</div>
 				</div>
 
@@ -82,6 +95,7 @@
 </template>
 
 <script>
+import YoutubeIcon from '@/assets/icons/YoutubeIcon.vue'
 import FooterBottom from './FooterBottom.vue'
 
 export default {

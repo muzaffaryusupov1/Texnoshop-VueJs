@@ -4,7 +4,7 @@
 			<div>
 				<div class="mb-6">
 					<h1 class="font-semibold text-2xl tracking-[-0.02px] max-md:text-xl max-sm:text-base">
-						Recommended products
+						Barcha maxsulotlar
 					</h1>
 				</div>
 				<div

@@ -37,7 +37,7 @@
 									</span>
 								</div>
 								<span class="font-normal text-base text-orange max-[870px]:text-sm max-sm:text-xs">
-									{{ product?.rating }} rating
+									{{ product?.rating }} baho
 								</span>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 								<MessageSmallIcon />
 							</span>
 							<span class="font-normal text-base text-text-gray max-[870px]:text-sm max-sm:text-xs">
-								{{ product?.reviewCount }} reviews
+								{{ product?.reviewCount }} ta sharhlar
 							</span>
 						</div>
 
@@ -56,7 +56,7 @@
 								<BasketIcon />
 							</span>
 							<span class="font-normal text-base text-text-gray max-[870px]:text-sm max-sm:text-xs">
-								{{ product?.sold }} sold
+								{{ product?.sold }} ta sotilgan
 							</span>
 						</div>
 					</div>
@@ -75,7 +75,7 @@
 					>
 						<li class="flex gap-x-1 mb-1">
 							<strong class="text-base leading-[110%] text-black max-[870px]:text-sm"
-								>Brand:</strong
+								>Brendi:</strong
 							>
 							<span
 								class="flex-auto border-b-2 border-t-0 border-r-0 border-l-0 border-dotted border-gray-300"
@@ -86,7 +86,7 @@
 						</li>
 						<li class="flex gap-x-1 mb-1">
 							<strong class="text-base leading-[110%] text-black max-[870px]:text-sm">
-								Model:
+								Modeli:
 							</strong>
 							<span
 								class="flex-auto border-b-2 border-t-0 border-r-0 border-l-0 border-dotted border-gray-300"
@@ -97,13 +97,13 @@
 						</li>
 						<li class="flex gap-x-1">
 							<strong class="text-base leading-[110%] text-black max-[870px]:text-sm">
-								Status:
+								Holati:
 							</strong>
 							<span
 								class="flex-auto border-b-2 border-t-0 border-r-0 border-l-0 border-dotted border-gray-300"
 							></span>
-							<span class="text-base leading-[110%] text-black max-[870px]:text-sm">
-								Available for sale
+							<span class="text-base leading-[110%] text-green max-[870px]:text-sm">
+								Sotuvda bor
 							</span>
 						</li>
 					</ul>
@@ -111,8 +111,8 @@
 					<div
 						class="flex gap-x-2 max-w-[450px] max-[870px]:max-w-[300px] max-[870px]:gap-x-1 max-md:max-w-full max-md:hidden"
 					>
-						<Button>Add to cart</Button>
-						<ButtonWhite>Shop now</ButtonWhite>
+						<Button>Savatga qo'shish</Button>
+						<ButtonWhite>Hozir harid olish</ButtonWhite>
 					</div>
 				</div>
 				<div
@@ -127,7 +127,7 @@
 						</p>
 					</div>
 					<div class="w-64 max-sm:w-40 max-[420px]:w-32">
-						<Button class="pointer-events-none max-[420px]:p-2">Add to cart</Button>
+						<Button class="pointer-events-none max-[420px]:p-2">Savatga qo'shish</Button>
 					</div>
 				</div>
 			</div>

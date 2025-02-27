@@ -93,10 +93,10 @@ const actions = {
 				.catch(() => context.commit('getBrandsFailure'))
 		})
 	},
-	productsWithBrandsId(context, arr) {
+	productsWithBrandsId(context, obj) {
 		return new Promise(resolve => {
 			context.commit('getProductsBrandsIdStart')
-			CategoriesService.productsFilterWithBrandId(arr)
+			CategoriesService.productsFilterWithBrandId(obj)
 				.then(response => {
 					context.commit('getProductsBrandsIdSuccess', response.data)
 					resolve(response.data)

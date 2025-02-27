@@ -3,7 +3,8 @@
 		<div
 			class="flex items-center justify-between border border-solid border-gray-300 rounded-md py-[22px] px-[19px] max-lg:p-4 max-md:py-4 max-md:px-4 max-sm:py-3 max-sm:px-2"
 		>
-			<h2 class="font-normal text-base text-black max-md:text-sm max-sm:hidden">
+			<div v-if="products && categories === null">Loading...</div>
+			<h2 class="font-normal text-base text-black max-md:text-sm max-sm:hidden" v-else>
 				{{ products?.length }} items in
 				<span class="font-bold">{{ categories?.find(item => item.id == categoryId)?.title }}</span>
 			</h2>
@@ -24,12 +25,12 @@
 			</Teleport>
 
 			<div class="flex items-center gap-3 max-md:gap-1.5">
-				<form class="flex items-center" @submit.prevent>
+				<form class="flex items-center">
 					<select
 						name="categories__input"
 						id="select"
 						class="w-[172px] py-3 px-2 rounded-md border border-solid border-gray-300 max-lg:w-[120px] max-md:p-1.5 max-md:w-[100px] max-sm:w-20"
-						@click="handleAsc($event)"
+						@change="handleAsc"
 					>
 						<option value="none" class="font-normal text-base text-black max-md:text-sm">
 							None
@@ -66,18 +67,19 @@
 		<div class="mt-5 flex items-center gap-2 flex-wrap">
 			<button
 				class="flex items-center gap-x-2 py-[5px] px-[10px] border border-solid border-primary rounded-md font-normal text-base text-gray-600"
-				v-for="brand in brands"
+				v-for="brand in brands?.filter(item => $route.query.brand_id?.includes(item.id))"
 				:key="brand.id"
-				@click="() => handleBrandDelete(brand.id)"
+				@click="handleBrandDelete(brand.id)"
 			>
-				{{ brand.title }}
+				<span>{{ brand.title }}</span>
 				<span>
 					<CloseIcon />
 				</span>
 			</button>
 		</div>
 
-		<CategoryItems :active="active" />
+		<div v-if="products?.length === 0">Hech narsa topilmadi</div>
+		<CategoryItems v-else :active="active" />
 
 		<div class="flex items-center justify-end gap-[10px]">
 			<select
@@ -137,10 +139,7 @@ export default {
 		...mapState({
 			categories: state => state.categories.categories,
 			products: state => state.categories.products,
-			brands: state =>
-				state.categories.brands?.filter(item =>
-					getIds(new URL(window.location.href).searchParams.get('brand_id')).includes(item.id)
-				),
+			brands: state => state.categories.brands,
 		}),
 	},
 	methods: {
@@ -180,9 +179,6 @@ export default {
 				brand_arr: getIds(query.brand_id),
 				sortBy: query.sortBy,
 			})
-			if (this.$route.query === query) {
-				this.$store.dispatch('brands')
-			}
 		},
 	},
 }

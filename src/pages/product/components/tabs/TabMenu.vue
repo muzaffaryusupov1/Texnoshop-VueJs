@@ -30,16 +30,16 @@
 				v-else
 			>
 				<TabsNavbar
-					:tabs="['Description', 'Characteristic']"
+					:tabs="['Mahsulot tavsifi', 'Xususiyatlari']"
 					:selected="selected"
 					@selected="setSelected"
 					v-for="product in products"
 					:key="product.id"
 				>
-					<Tab :is-selected="selected === 'Description'">
+					<Tab :is-selected="selected === 'Mahsulot tavsifi'">
 						<ProductDescription :product-description="product.desc" />
 					</Tab>
-					<Tab :is-selected="selected === 'Characteristic'">
+					<Tab :is-selected="selected === 'Xususiyatlari'">
 						<ProductCharacteristic :product-characteristic="product.attributes" />
 					</Tab>
 				</TabsNavbar>
@@ -58,7 +58,7 @@ export default {
 	components: { TabsNavbar, Tab, ProductCharacteristic, ProductDescription },
 	data() {
 		return {
-			selected: 'Description',
+			selected: 'Mahsulot tavsifi',
 		}
 	},
 	methods: {

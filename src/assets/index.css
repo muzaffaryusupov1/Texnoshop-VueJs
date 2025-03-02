@@ -81,6 +81,6 @@ body,
 	border: 2px solid #555555;
 }
 
-body:has(.drawer) {
+body:has(.drawer, .filterModal) {
 	overflow: hidden;
 }

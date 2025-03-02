@@ -24,10 +24,10 @@
 					<p
 						class="font-normal text-base leading-[150%] tracking-[-0.001em] text-gray-500 max-md:text-sm max-md:leading-[120%]"
 					>
-						model
+						modeli
 					</p>
 					<div class="w-[100px] mt-3">
-						<ButtonRed class="max-sm:text-sm">Delete</ButtonRed>
+						<ButtonRed class="max-sm:text-sm">O'chirish</ButtonRed>
 					</div>
 				</div>
 				<div>

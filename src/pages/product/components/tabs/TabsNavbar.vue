@@ -5,10 +5,10 @@
 		>
 			<div v-for="tab in tabs" :key="tab">
 				<button
-					class="flex items-center justify-center w-[130px] h-12 font-medium text-base transition-all ease-out duration-300 max-md:w-24 max-md:h-8 max-md:text-sm"
+					class="flex items-center justify-center w-[130px] h-12 font-medium text-base transition-all ease-out duration-300 max-md:w-24 max-md:h-8 max-md:text-xs"
 					:class="
 						tab === selected
-							? 'text-primary pt-[6px] border-t-0 border-r-0 border-b-2 border-l-0 border-solid border-primary max-sm:text-sm'
+							? 'text-primary pt-[6px] border-t-0 border-r-0 border-b-2 border-l-0 border-solid border-primary'
 							: ''
 					"
 					@click="setTab(tab)"

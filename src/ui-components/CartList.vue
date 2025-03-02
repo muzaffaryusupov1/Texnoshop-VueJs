@@ -42,20 +42,20 @@
 				</div>
 
 				<p class="text-base text-black leading-3 font-medium max-[980px]:text-sm">
-					{{ cart.reviewcount }} reviews
+					{{ cart.reviewcount }} ta sharhlar
 				</p>
 				<p
 					v-if="cart.sold"
 					class="text-base text-green leading-3 font-medium max-[980px]:text-sm max-sm:hidden"
 				>
-					Available for sale
+					Sotuvda bor
 				</p>
 			</div>
 			<p
 				v-if="cart.sold"
 				class="text-base text-green leading-3 font-medium max-[980px]:text-sm hidden max-sm:block mt-5 max-[500px]:mt-2"
 			>
-				Available for sale
+				Sotuvda bor
 			</p>
 			<p
 				class="text-base text-black font-medium mt-3 max-[980px]:text-sm max-sm:hidden max-[500px]:mt-1"

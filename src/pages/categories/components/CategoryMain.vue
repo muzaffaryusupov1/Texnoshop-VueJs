@@ -33,13 +33,13 @@
 						@change="handleAsc"
 					>
 						<option value="none" class="font-normal text-base text-black max-md:text-sm">
-							None
+							Hech qaysi
 						</option>
 						<option value="asc" class="font-normal text-base text-black max-md:text-sm">
-							Cheap
+							Arzon
 						</option>
 						<option value="desc" class="font-normal text-base text-black max-md:text-sm">
-							Expensive
+							Qimmat
 						</option>
 					</select>
 				</form>
@@ -48,7 +48,7 @@
 						type="button"
 						class="border border-solid border-gray-300 rounded-md p-1 ml-[10px] last:ml-0 mr-2 max-sm:p-0.5 max-sm:mr-1 max-sm:ml-2"
 						:class="active && 'bg-gray-300'"
-						@click="handleChangeView"
+						@click="handleGridView"
 					>
 						<GridViewIcon />
 					</button>
@@ -56,7 +56,7 @@
 						class="border border-solid border-gray-300 rounded-md p-1 ml-[10px] last:ml-0 max-sm:p-0.5 max-sm:mr-1 max-sm:ml-2"
 						type="button"
 						:class="!active && 'bg-gray-300'"
-						@click="handleChangeView"
+						@click="handleListView"
 					>
 						<ListViewIcon />
 					</button>
@@ -155,8 +155,11 @@ export default {
 				query: { brand_id: this.fitleredBrands.filter(item => item !== id).join(',') },
 			})
 		},
-		handleChangeView() {
-			this.active = !this.active
+		handleGridView() {
+			this.active = true
+		},
+		handleListView() {
+			this.active = false
 		},
 		toggleModal() {
 			this.modalFilter = !this.modalFilter

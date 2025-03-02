@@ -9,7 +9,7 @@
 				<p
 					class="font-normal text-base leading-[150%] tracking-[-0.01em] text-gray-600 max-md:leading-[100%] max-sm:text-sm"
 				>
-					Amount:
+					Summasi:
 				</p>
 				<span
 					class="font-normal text-base leading-[150%] tracking-[-0.01em] text-right text-gray-600 max-md:leading-[100%] max-sm:text-sm"
@@ -21,7 +21,7 @@
 				<p
 					class="font-normal text-base leading-[150%] tracking-[-0.01em] text-gray-600 max-md:leading-[100%] max-sm:text-sm"
 				>
-					Discount:
+					Chegirma:
 				</p>
 				<span
 					class="font-normal text-base leading-[150%] tracking-[-0.01em] text-right text-red max-md:leading-[100%] max-sm:text-sm"
@@ -33,7 +33,7 @@
 		<div
 			class="flex items-center justify-between p-1 pt-[17px] max-md:p-0.5 max-md:pt-3.5 max-sm:pt-2.5"
 		>
-			<p class="font-semibold text-base text-black max-sm:text-sm">Total:</p>
+			<p class="font-semibold text-base text-black max-sm:text-sm">Jami:</p>
 			<span
 				class="font-semibold text-xl leading-[140%] tracking-[-0.01em] text-green max-sm:text-base"
 			>

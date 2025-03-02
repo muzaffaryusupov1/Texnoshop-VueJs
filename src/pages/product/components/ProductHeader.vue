@@ -20,19 +20,7 @@
 						<div class="relative">
 							<div class="flex items-center gap-2 max-[870px]:gap-1">
 								<div class="flex items-center gap-1 max-[870px]:gap-0.5 max-sm:gap-0">
-									<span class="mb-[2px]">
-										<StarIcon class="fill-orange" />
-									</span>
-									<span class="mb-[2px]">
-										<StarIcon class="fill-orange" />
-									</span>
-									<span class="mb-[2px]">
-										<StarIcon class="fill-orange" />
-									</span>
-									<span class="mb-[2px]">
-										<StarIcon class="fill-orange" />
-									</span>
-									<span class="mb-[2px]">
+									<span class="mb-1">
 										<StarIcon class="fill-orange" />
 									</span>
 								</div>
@@ -62,7 +50,7 @@
 					</div>
 
 					<div class="mb-2">
-						<p class="text-[14px] leading-5 line-through text-orange-primary max-[870px]:text-xs">
+						<p class="text-[14px] leading-5 line-through text-gray-600 max-[870px]:text-xs">
 							{{ product?.oldPrice?.toLocaleString() }} UZS
 						</p>
 						<p class="font-bold text-2xl text-orange max-[870px]:text-xl">
@@ -71,7 +59,7 @@
 					</div>
 
 					<ul
-						class="py-[14px] mb-[14px] max-[870px]:py-2 max-[870px]:mb-2 border-t-1 border-r-0 border-b-1 border-l-0 border-solid border-wheat max-w-[70%] max-[870px]:max-w-full max-md:m-0 max-md:pt-2 max-md:pb-0"
+						class="py-[14px] mb-[14px] max-[870px]:py-2 max-[870px]:mb-2 border-t-1 border-r-0 border-b-1 border-l-0 border-solid border-wheat max-w-[70%] max-[870px]:max-w-full max-md:m-0 max-md:pt-2 max-md:pb-0 flex flex-col gap-2 max-sm:gap-1"
 					>
 						<li class="flex gap-x-1 mb-1">
 							<strong class="text-base leading-[110%] text-black max-[870px]:text-sm"
@@ -126,8 +114,8 @@
 							{{ product?.price?.toLocaleString() }} UZS
 						</p>
 					</div>
-					<div class="w-64 max-sm:w-40 max-[420px]:w-32">
-						<Button class="pointer-events-none max-[420px]:p-2">Savatga qo'shish</Button>
+					<div class="w-64 max-sm:w-40">
+						<Button class="pointer-events-none max-[420px]:p-1">Savatga qo'shish</Button>
 					</div>
 				</div>
 			</div>

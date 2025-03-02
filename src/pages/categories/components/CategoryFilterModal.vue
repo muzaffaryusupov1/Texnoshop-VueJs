@@ -1,5 +1,5 @@
 <template>
-	<div class="hidden max-sm:block fixed max-w-full inset-0 max-h-screen z-[9999]">
+	<div class="hidden max-sm:block fixed max-w-full inset-0 max-h-screen z-[9999] filterModal">
 		<div
 			class="bg-black-rgba w-full h-screen inset-0 duration-700 ease-out"
 			:class="active ? 'block' : 'hidden'"
@@ -22,7 +22,7 @@
 						<ArrowIcon />
 					</span>
 				</div>
-				<form class="h-[370px] overflow-y-scroll scroll">
+				<form class="h-[200px] overflow-y-scroll scroll">
 					<div
 						className="flex items-center pt-[5px] mb-[10px]"
 						v-for="item in brands"

@@ -40,6 +40,19 @@
 							</button>
 						</RouterLink>
 
+						<RouterLink :to="{ name: 'cart' }" class="max-sm:hidden">
+							<button
+								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
+							>
+								<span>
+									<CartIcon class="group-hover:fill-primary" />
+								</span>
+								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
+									Savatcha
+								</span>
+							</button>
+						</RouterLink>
+
 						<RouterLink :to="{ name: 'wishlist' }">
 							<button
 								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"

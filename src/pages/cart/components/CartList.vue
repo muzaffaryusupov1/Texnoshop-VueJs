@@ -11,13 +11,13 @@
 				<Button @click="handleClick">
 					<div class="flex items-center gap-2">
 						<ArrowBackIcon class="fill-white group-hover:fill-primary" />
-						<span class="text-base max-sm:text-sm">To Home</span>
+						<span class="text-base max-sm:text-sm">Bosh Sahifa</span>
 					</div>
 				</Button>
 			</div>
 
-			<div class="w-[140px]">
-				<ButtonRed>Remove All</ButtonRed>
+			<div class="w-[200px]">
+				<ButtonRed>Savatchani tozalash</ButtonRed>
 			</div>
 		</div>
 	</div>

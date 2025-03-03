@@ -3,7 +3,7 @@
 		class="w-full bg-white border border-solid border-gray-300 rounded-lg p-5 max-md:p-4 max-sm:p-3 max-[420px]:py-3 max-[420px]:px-1"
 	>
 		<div>
-			<CartProduct />
+			<CartProduct :items="items" />
 		</div>
 
 		<div class="flex items-center justify-between">
@@ -17,7 +17,7 @@
 			</div>
 
 			<div class="w-[200px]">
-				<ButtonRed>Savatchani tozalash</ButtonRed>
+				<ButtonRed @click="$store.commit('removeAllFromCart')">Savatchani tozalash</ButtonRed>
 			</div>
 		</div>
 	</div>
@@ -28,6 +28,12 @@ import CartProduct from './CartProduct.vue'
 
 export default {
 	components: { CartProduct },
+	props: {
+		items: {
+			type: Object,
+			required: true,
+		},
+	},
 	methods: {
 		handleClick() {
 			this.$router.push('/')

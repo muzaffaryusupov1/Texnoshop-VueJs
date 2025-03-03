@@ -18,3 +18,8 @@ export function buildBuilder(builder, request, name) {
 }
 
 export const getIds = arr => (arr && !!arr.length ? arr.split(',').map(item => Number(item)) : [])
+
+export function setCart(arr) {
+	localStorage.setItem('cart', JSON.stringify(arr))
+	return arr
+}

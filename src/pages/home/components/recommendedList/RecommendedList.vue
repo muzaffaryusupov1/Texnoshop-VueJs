@@ -29,6 +29,7 @@
 						<button
 							class="group transition-all ease-out duration-300 border border-solid border-primary-light p-2 rounded-xl absolute right-4 bottom-4 z-50 hover:bg-primary h-10 max-[620px]:top-12 max-[620px]:right-4 max-[620px]:p-1 max-[620px]:rounded-full max-[620px]:h-fit"
 							title="Add to Cart"
+							@click="addToCart(product)"
 						>
 							<CartIcon class="fill-primary group-hover:fill-white" />
 						</button>
@@ -46,10 +47,17 @@ export default {
 	computed: {
 		...mapState({
 			data: state => state.products.data,
+			items: state => state.cart.items,
 		}),
 	},
 	mounted() {
 		this.$store.dispatch('products')
+	},
+	methods: {
+		addToCart(product) {
+			this.$store.commit('addToCart', product)
+			this.active = true
+		},
 	},
 }
 </script>

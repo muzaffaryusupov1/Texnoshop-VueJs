@@ -99,7 +99,7 @@
 					<div
 						class="flex gap-x-2 max-w-[450px] max-[870px]:max-w-[300px] max-[870px]:gap-x-1 max-md:max-w-full max-md:hidden"
 					>
-						<Button>Savatga qo'shish</Button>
+						<Button @click="addToCart">Savatga qo'shish</Button>
 						<ButtonWhite>Hozir harid olish</ButtonWhite>
 					</div>
 				</div>
@@ -115,7 +115,9 @@
 						</p>
 					</div>
 					<div class="w-64 max-sm:w-40">
-						<Button class="pointer-events-none max-[420px]:p-1">Savatga qo'shish</Button>
+						<Button class="pointer-events-none max-[420px]:p-1" @click="addToCart"
+							>Savatga qo'shish</Button
+						>
 					</div>
 				</div>
 			</div>
@@ -124,6 +126,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import SwiperImages from './SwiperImages.vue'
 
 export default {
@@ -132,6 +135,22 @@ export default {
 		product: {
 			type: Object,
 			required: true,
+		},
+	},
+	computed: {
+		...mapState({
+			items: state => state.cart.items,
+		}),
+	},
+	mounted() {
+		console.log(this.items)
+	},
+	methods: {
+		addToCart() {
+			this.$store.commit('addToCart', this.product)
+		},
+		removeFromCart() {
+			this.$store.commit('removeFromCart', this.product)
 		},
 	},
 }

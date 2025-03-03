@@ -14,7 +14,7 @@
 				<span
 					class="font-normal text-base leading-[150%] tracking-[-0.01em] text-right text-gray-600 max-md:leading-[100%] max-sm:text-sm"
 				>
-					1111111 UZS
+					{{ subtotal.toLocaleString() }} UZS
 				</span>
 			</div>
 			<div class="flex items-center justify-between p-1">
@@ -26,7 +26,7 @@
 				<span
 					class="font-normal text-base leading-[150%] tracking-[-0.01em] text-right text-red max-md:leading-[100%] max-sm:text-sm"
 				>
-					- 67803 UZS
+					- {{ discount.toLocaleString() }} UZS
 				</span>
 			</div>
 		</div>
@@ -37,11 +37,11 @@
 			<span
 				class="font-semibold text-xl leading-[140%] tracking-[-0.01em] text-green max-sm:text-base"
 			>
-				67687678 UZS
+				{{ total.toLocaleString() }} UZS
 			</span>
 		</div>
 
-		<Button>Checkout</Button>
+		<Button>Buyurtma berish</Button>
 
 		<div class="flex gap-2 p-5 max-md:hidden">
 			<span>
@@ -64,5 +64,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+	data() {
+		return {
+			subtotal: this.items.reduce((a, b) => a + b.oldPrice * b.qty, 0),
+			discount: this.items.reduce((a, b) => a + (b.oldPrice - b.price) * b.qty, 0),
+			total: this.items.reduce((a, b) => a + b.price * b.qty, 0),
+		}
+	},
+	props: {
+		items: {
+			type: Object,
+			required: true,
+		},
+	},
+}
 </script>

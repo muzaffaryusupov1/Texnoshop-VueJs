@@ -9,10 +9,12 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@formkit/auto-animate": "^0.8.2",
 		"axios": "^1.7.9",
 		"swiper": "^11.2.2",
 		"vue": "^3.5.13",
 		"vue-router": "^4.5.0",
+		"vue3-toastify": "^0.2.8",
 		"vuex": "^4.0.2"
 	},
 	"devDependencies": {

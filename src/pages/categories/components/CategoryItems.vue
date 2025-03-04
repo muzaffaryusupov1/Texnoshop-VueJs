@@ -38,7 +38,7 @@
 			:class="!active && 'mb-5 last:mb-0'"
 			:key="product.id"
 		>
-			<RouterLink :to="`/product/${product.slug}`">
+			<RouterLink :to="`/product/${product.slug}`" v-auto-animate>
 				<!-- CART -->
 				<Cart v-if="active" :cart="product" :key="product.id" />
 				<!-- CARTLIST -->

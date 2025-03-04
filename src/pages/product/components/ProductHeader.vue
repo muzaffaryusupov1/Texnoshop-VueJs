@@ -115,9 +115,7 @@
 						</p>
 					</div>
 					<div class="w-64 max-sm:w-40">
-						<Button class="pointer-events-none max-[420px]:p-1" @click="addToCart"
-							>Savatga qo'shish</Button
-						>
+						<Button class="max-[420px]:p-1" @click="addToCart">Savatga qo'shish</Button>
 					</div>
 				</div>
 			</div>
@@ -126,6 +124,7 @@
 </template>
 
 <script>
+import { toastify } from '@/utils/helpers'
 import { mapState } from 'vuex'
 import SwiperImages from './SwiperImages.vue'
 
@@ -148,9 +147,7 @@ export default {
 	methods: {
 		addToCart() {
 			this.$store.commit('addToCart', this.product)
-		},
-		removeFromCart() {
-			this.$store.commit('removeFromCart', this.product)
+			toastify("Savatga qo'shildi", 'success')
 		},
 	},
 }

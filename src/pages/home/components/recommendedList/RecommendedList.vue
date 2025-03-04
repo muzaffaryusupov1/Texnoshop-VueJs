@@ -18,8 +18,10 @@
 						<button
 							class="group transition-all border border-solid border-gray-300 p-1.5 rounded-full absolute right-4 top-4 z-50 max-[620px]:p-1"
 							title="Add to Wish List"
+							@click="addToFavorite(product)"
 						>
-							<HeartIcon />
+							<HeartIcon class="fill-red" v-if="like" />
+							<HeartIcon v-else />
 						</button>
 
 						<RouterLink :to="`/product/${product.slug}`" :key="product.id">
@@ -27,11 +29,13 @@
 						</RouterLink>
 
 						<button
-							class="group transition-all ease-out duration-300 border border-solid border-primary-light p-2 rounded-xl absolute right-4 bottom-4 z-50 hover:bg-primary h-10 max-[620px]:top-12 max-[620px]:right-4 max-[620px]:p-1 max-[620px]:rounded-full max-[620px]:h-fit"
+							class="group transition-all ease-out duration-300 border border-solid border-primary-light p-2 rounded-xl absolute right-4 bottom-4 z-50 hover:bg-primary h-10 max-[620px]:top-12 max-[620px]:right-4 max-[620px]:p-1 max-[620px]:rounded-full max-[620px]:h-fit max-sm:hover:bg-transparent"
 							title="Add to Cart"
 							@click="addToCart(product)"
 						>
-							<CartIcon class="fill-primary group-hover:fill-white" />
+							<CartIcon
+								class="fill-primary group-hover:fill-white max-sm:group-hover:fill-primary"
+							/>
 						</button>
 					</div>
 				</div>
@@ -41,9 +45,15 @@
 </template>
 
 <script>
+import { toastify } from '@/utils/helpers'
 import { mapState } from 'vuex'
 
 export default {
+	data() {
+		return {
+			like: false,
+		}
+	},
 	computed: {
 		...mapState({
 			data: state => state.products.data,
@@ -56,7 +66,16 @@ export default {
 	methods: {
 		addToCart(product) {
 			this.$store.commit('addToCart', product)
-			this.active = true
+			toastify("Savatga qo'shildi", 'success')
+			console.log(this.data)
+		},
+		addToFavorite(product) {
+			this.$store.commit('addToFavorite', product)
+			toastify('Liked', 'success')
+		},
+		removeFromFavorite(product) {
+			this.$store.commit('removeFromFavorite', product)
+			toastify('Unliked', 'success')
 		},
 	},
 }

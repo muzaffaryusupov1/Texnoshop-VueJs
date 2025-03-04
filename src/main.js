@@ -1,6 +1,5 @@
 import 'swiper/css'
 import { createApp } from 'vue'
-import 'vue-toastification/dist/index.css'
 import App from './App.vue'
 import icons from './assets/icons'
 import './assets/index.css'

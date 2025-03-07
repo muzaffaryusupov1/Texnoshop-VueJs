@@ -46,9 +46,9 @@
 						:key="item.id"
 						class="bg-white border border-solid border-gray-300 shadow-lg shadow-shadow-cc relative rounded-xl"
 					>
-						<RouterLink :to="`/product/${item.slug}`">
+						<router-link :to="`/product/${item.slug}`">
 							<Cart :cart="item" />
-						</RouterLink>
+						</router-link>
 					</swiper-slide>
 				</swiper>
 

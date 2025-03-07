@@ -15,8 +15,6 @@ const mutations = {
 		state.error = null
 		state.recommended = null
 		state.product = null
-		state.phones = null
-		state.tv = null
 	},
 	getProductsSuccess(state, payload) {
 		state.isLoading = false
@@ -27,7 +25,6 @@ const mutations = {
 	},
 	getProductsDetailStart(state) {
 		state.isLoading = true
-		state.data = null
 		state.error = null
 		state.product = null
 	},
@@ -40,7 +37,6 @@ const mutations = {
 	},
 	getRecommendedProductsStart(state) {
 		state.isLoading = true
-		state.data = null
 		state.error = null
 		state.recommended = null
 	},

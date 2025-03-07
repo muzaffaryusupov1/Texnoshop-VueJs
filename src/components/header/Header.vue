@@ -12,21 +12,20 @@
 						</RouterLink>
 					</div>
 
-					<form
-						class="hidden md:w-[300px] lg:w-[400px] h-10 sm:flex items-center border border-solid py-3 px-2 rounded-lg border-black"
-					>
-						<input
-							type="text"
-							class="flex-auto h-full px-2 text-base text-black font-normal"
-							placeholder="Qidirish..."
-							id="input-search"
-						/>
-						<button type="submit" aria-label="input-search" title="Search...">
-							<SearchIcon />
-						</button>
-					</form>
+					<div v-if="products === null">Loading...</div>
+					<SearchModal :searchModal="searchModal" :products="products" v-else />
 
 					<div class="flex items-center gap-x-6 max-md:gap-4">
+						<button
+							type="button"
+							aria-label="input-search"
+							title="Search..."
+							@click="searchModal = !searchModal"
+							class="max-sm:block hidden"
+						>
+							<SearchIcon />
+						</button>
+
 						<RouterLink :to="{ name: 'signin' }">
 							<button
 								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
@@ -85,12 +84,15 @@
 <script>
 import { mapState } from 'vuex'
 import Modal from '../Modal.vue'
+import SearchModal from './SearchModal.vue'
 
 export default {
-	components: { Modal },
+	components: { Modal, SearchModal },
 	data() {
 		return {
 			modal: false,
+			searchModal: false,
+			search: '',
 		}
 	},
 	methods: {
@@ -104,10 +106,12 @@ export default {
 	computed: {
 		...mapState({
 			categories: state => state.categories.categories,
+			products: state => state.products.data,
 		}),
 	},
 	mounted() {
 		this.$store.dispatch('categories')
+		this.$store.dispatch('products')
 	},
 }
 </script>

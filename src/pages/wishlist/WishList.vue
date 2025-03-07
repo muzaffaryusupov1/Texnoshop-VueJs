@@ -15,6 +15,7 @@
 		</div>
 		<div
 			class="grid grid-cols-5 gap-1 max-[1120px]:gap-3 max-[1120px]:grid-cols-4 max-[920px]:grid-cols-3 max-[720px]:grid-cols-2 xl:gap-4"
+			v-auto-animate
 		>
 			<div
 				v-for="item of items"
@@ -27,7 +28,7 @@
 				>
 					<HeartIcon class="fill-red" />
 				</button>
-				<RouterLink :to="`/product/${item.slug}`" v-auto-animate>
+				<RouterLink :to="`/product/${item.slug}`">
 					<Cart :cart="item" />
 				</RouterLink>
 				<button
@@ -41,16 +42,10 @@
 </template>
 
 <script>
-import EmptyPage from '@/ui-components/EmptyPage.vue'
-import { products } from '@/utils/data'
+import { toastify } from '@/utils/helpers'
 import { mapState } from 'vuex'
 
 export default {
-	data() {
-		return {
-			products,
-		}
-	},
 	computed: {
 		...mapState({
 			items: state => state.favorites.items,
@@ -59,6 +54,7 @@ export default {
 	methods: {
 		removeFromFavorite(product) {
 			this.$store.commit('removeFromFavorite', product)
+			toastify("Sevimlilardan o'chirildi", 'error')
 		},
 	},
 }

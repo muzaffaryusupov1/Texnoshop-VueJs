@@ -131,7 +131,7 @@ export default {
 			fitleredBrands: getIds(new URL(window.location.href).searchParams.get('brand_id')),
 			sortBy: new URL(window.location.href).searchParams.get('sortBy'),
 			query: this.$route.query,
-			active: true,
+			active: false,
 			modalFilter: false,
 		}
 	},

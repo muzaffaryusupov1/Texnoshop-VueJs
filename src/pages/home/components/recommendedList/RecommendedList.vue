@@ -20,8 +20,7 @@
 							title="Add to Wish List"
 							@click="addToFavorite(product)"
 						>
-							<HeartIcon class="fill-red" v-if="like" />
-							<HeartIcon v-else />
+							<HeartIcon />
 						</button>
 
 						<RouterLink :to="`/product/${product.slug}`" :key="product.id">
@@ -49,15 +48,11 @@ import { toastify } from '@/utils/helpers'
 import { mapState } from 'vuex'
 
 export default {
-	data() {
-		return {
-			like: false,
-		}
-	},
 	computed: {
 		...mapState({
 			data: state => state.products.data,
 			items: state => state.cart.items,
+			favoriteItems: state => state.favorites.items,
 		}),
 	},
 	mounted() {
@@ -67,15 +62,10 @@ export default {
 		addToCart(product) {
 			this.$store.commit('addToCart', product)
 			toastify("Savatga qo'shildi", 'success')
-			console.log(this.data)
 		},
 		addToFavorite(product) {
 			this.$store.commit('addToFavorite', product)
-			toastify('Liked', 'success')
-		},
-		removeFromFavorite(product) {
-			this.$store.commit('removeFromFavorite', product)
-			toastify('Unliked', 'success')
+			toastify("Sevimlilarga qo'shildi", 'success')
 		},
 	},
 }

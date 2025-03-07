@@ -141,13 +141,15 @@ export default {
 			items: state => state.cart.items,
 		}),
 	},
-	mounted() {
-		console.log(this.items)
-	},
 	methods: {
 		addToCart() {
 			this.$store.commit('addToCart', this.product)
 			toastify("Savatga qo'shildi", 'success')
+		},
+	},
+	watch: {
+		$route({ params }) {
+			this.$store.dispatch('productsDetail', params.slug)
 		},
 	},
 }

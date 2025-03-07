@@ -47,6 +47,7 @@
 
 			<button
 				class="absolute top-0 right-[-10px] m-5 p-2 border border-solid border-gray-300 rounded-md max-[540px]:hidden"
+				@click="addToFavorite(product)"
 			>
 				<HeartIcon />
 			</button>
@@ -55,6 +56,7 @@
 </template>
 
 <script>
+import { toastify } from '@/utils/helpers'
 import { mapState } from 'vuex'
 
 export default {
@@ -68,6 +70,12 @@ export default {
 		active: {
 			type: Boolean,
 			required: true,
+		},
+	},
+	methods: {
+		addToFavorite(product) {
+			this.$store.commit('addToFavorite', product)
+			toastify("Sevimlilarga qo'shildi", 'success')
 		},
 	},
 }

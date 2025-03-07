@@ -39,3 +39,30 @@ export function toastify(message, type = 'default') {
 		dangerouslyHTMLString: true,
 	})
 }
+
+/*
+export default {
+	computed: {
+		...mapState({
+			data: state => state.products.data,
+			items: state => state.cart.items,
+			favoriteItems: state => state.favorites.items,
+		}),
+	},
+	mounted() {
+		this.$store.dispatch('products')
+	},
+	methods: {
+		addToCart(product) {
+			this.$store.commit('addToCart', product)
+			toastify("Savatga qo'shildi", 'success')
+		},
+		addToFavorite(product) {
+			this.$store.commit('addToFavorite', product)
+			toastify('Liked', 'success')
+		},
+	},
+}
+
+
+*/

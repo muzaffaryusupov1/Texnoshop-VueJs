@@ -7,7 +7,7 @@
 		>
 			<div class="flex flex-col gap-2 relative max-lg:gap-1.5">
 				<div class="flex items-center justify-between py-[14px] mb-[10px]">
-					<h2 class="font-semibold text-base text-black">Categories</h2>
+					<h2 class="font-semibold text-base text-black">Kataloglar</h2>
 					<span>
 						<ArrowIcon />
 					</span>

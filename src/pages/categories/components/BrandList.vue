@@ -3,7 +3,7 @@
 		class="flex flex-col border-t border-r-0 border-b-0 border-l-0 border-solid border-gray-300 my-4"
 	>
 		<div class="flex items-center justify-between py-[14px] mb-[10px]">
-			<h2 class="font-semibold text-base text-black">Brands</h2>
+			<h2 class="font-semibold text-base text-black">Brandlar</h2>
 			<span>
 				<ArrowIcon />
 			</span>

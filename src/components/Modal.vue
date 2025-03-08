@@ -21,9 +21,11 @@
 						<Avatar />
 					</span>
 					<div class="flex gap-2">
-						<RouterLink :to="{ name: 'signin' }" @click="$emit('close')">Sign in</RouterLink>
+						<RouterLink :to="{ name: 'signin' }" @click="$emit('close')">Kirish</RouterLink>
 						<span>|</span>
-						<RouterLink :to="{ name: 'signup' }" @click="$emit('close')">Register</RouterLink>
+						<RouterLink :to="{ name: 'signup' }" @click="$emit('close')">
+							Ro'yxatdan o'tish
+						</RouterLink>
 					</div>
 				</div>
 			</div>
@@ -36,7 +38,7 @@
 					<span>
 						<HomeIcon />
 					</span>
-					<span class="text-base">Home</span>
+					<span class="text-base">Bosh sahifa</span>
 				</RouterLink>
 				<RouterLink
 					:to="`/category/${categories.slug}-${categories.id}`"
@@ -46,7 +48,7 @@
 					<span>
 						<CategoryIcon />
 					</span>
-					<span class="text-base">Categories</span>
+					<span class="text-base">Katalog</span>
 				</RouterLink>
 				<RouterLink
 					:to="{ name: 'wishlist' }"
@@ -56,7 +58,7 @@
 					<span>
 						<HeartIcon />
 					</span>
-					<span class="text-base">Favourites</span>
+					<span class="text-base">Saralanganlar</span>
 				</RouterLink>
 				<RouterLink
 					:to="{ name: 'cart' }"
@@ -66,7 +68,7 @@
 					<span>
 						<CartIcon />
 					</span>
-					<span class="text-base">My Cart</span>
+					<span class="text-base">Savatcha</span>
 				</RouterLink>
 			</div>
 		</div>

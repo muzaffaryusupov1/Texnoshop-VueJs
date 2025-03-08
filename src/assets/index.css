@@ -63,6 +63,13 @@ body,
 .main {
 	flex: 1 1 auto;
 	background: #f7fafc;
+	padding-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+	.main {
+		padding-bottom: 26px;
+	}
 }
 
 .scroll::-webkit-scrollbar-track {

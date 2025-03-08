@@ -1,6 +1,6 @@
 <template>
 	<footer
-		class="border-b-0 border-t border-l-0 border-r-0 border-solid border-wheat pt-10 max-md:pt-7 max-sm:pt-3 mt-10 max-sm:mt-5"
+		class="border-b-0 border-t border-l-0 border-r-0 border-solid border-wheat pt-8 max-md:pt-7 max-sm:pt-3"
 	>
 		<div class="container">
 			<div class="flex justify-between mb-10 max-lg:mb-7 max-md:mb-4 max-sm:flex-col">

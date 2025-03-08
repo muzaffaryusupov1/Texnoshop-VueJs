@@ -19,6 +19,18 @@ const mutations = {
 		const newItem = state.items.filter(item => item.id !== payload.id)
 		state.items = setCart(newItem)
 	},
+	increment(state, payload) {
+		const newItem = state.items.map(item =>
+			item.id === payload ? { ...item, qty: item.qty + 1 } : item
+		)
+		state.items = setCart(newItem)
+	},
+	decrement(state, payload) {
+		const newItem = state.items.map(item =>
+			item.id === payload ? { ...item, qty: item.qty === 1 ? 1 : item.qty - 1 } : item
+		)
+		state.items = setCart(newItem)
+	},
 	removeAllFromCart(state) {
 		state.items = setCart([])
 	},

@@ -11,13 +11,13 @@
 		>
 			<div class="p-4 mb-3">
 				<div class="mb-4">
-					<h2 class="text-xl font-medium text-black">Categories</h2>
+					<h2 class="text-xl font-medium text-black">Katalog</h2>
 				</div>
 				<div v-for="category in categories" :key="category" class="mb-3 last:mb-0">
 					<RouterLink :to="`${category.slug}-${category.id}`">{{ category.title }}</RouterLink>
 				</div>
 				<div class="flex items-center justify-between py-[14px] mb-[10px]">
-					<h2 class="font-semibold text-base text-black">Brands</h2>
+					<h2 class="font-semibold text-base text-black">Brandlar</h2>
 					<span>
 						<ArrowIcon />
 					</span>

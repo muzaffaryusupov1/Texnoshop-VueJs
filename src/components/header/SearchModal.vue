@@ -1,59 +1,52 @@
 <template>
-	<div :class="searchModal ? 'absolute' : ''">
-		<form
-			:class="
-				searchModal
-					? 'absolute top-5 left-16 p-4 border bg-white z-[9999] rounded-lg '
-					: 'hidden md:w-[300px] lg:w-[400px] h-10 sm:flex items-center border border-solid py-3 px-2 rounded-lg border-black'
-			"
-		>
+	<div>
+		<div class="flex items-center">
 			<input
 				type="text"
-				class="flex-auto h-full px-2 text-base text-black font-normal bg-white"
+				id="search"
 				placeholder="Qidirish..."
-				id="input-search"
 				v-model="search"
+				:class="
+					!searchModal
+						? 'top-0 w-[400px] absolute bg-white -left-52 py-6 px-7 pr-12 rounded-xl max-md:-left-64 max-[520px]:w-[300px] max-[520px]:top-4 max-[520px]:-left-48 z-[999999]'
+						: 'w-[500px] max-[1060px]:w-80 max-[800px]:w-[300px] max-md:hidden max-[574px]:w-[200px] py-4 px-7 pr-12 bg-slate-950 border border-solid border-slate-700 rounded-2xl focus:border-sky-500 ease-out duration-300'
+				"
 			/>
-			<button
-				type="button"
-				aria-label="input-search"
-				title="Search..."
-				:class="searchModal && 'hidden'"
-			>
+			<div
+				:class="
+					!searchModal
+						? 'fixed w-screen h-screen top-0 z-[99999] left-0 bg-black/55 md:hidden'
+						: 'hidden'
+				"
+			></div>
+			<label htmlFor="search" class="absolute right-0 p-3 cursor-pointer max-md:hidden">
 				<SearchIcon />
-			</button>
-		</form>
-	</div>
-
-	<div
-		:class="
-			!active || search === ''
-				? 'hidden'
-				: `absolute ${
-						searchModal ? 'top-28' : 'top-20'
-				  } max-xl:left-72 max-lg:left-60 max-[920px]:left-[200px] left-[460px] w-[400px] max-lg:w-80 max-md:w-96 max-md:left-28 max-[520px]:w-[300px] max-[520px]:left-20 max-[420px]:left-14 h-72 bg-white flex flex-col z-[999999999] overflow-y-scroll scroll`
-		"
-	>
+			</label>
+		</div>
 		<div
-			class="py-3 px-5 border border-gray-400"
-			v-for="product in filteredProducts"
-			:key="product.id"
+			:class="
+				search.length === 0 || search.length < 1
+					? 'hidden opacity-0'
+					: 'absolute inline-block top-full z-[999999] w-[calc(100%+10px)] max-md:w-[400px] max-md:-left-64 p-0 m-0 text-black max-h-[500px] max-md:top-[85px] overflow-y-auto overflow-x-hidden bg-white max-[520px]:w-[300px] max-[520px]:-left-48 max-[520px]:h-[300px]'
+			"
 		>
-			<RouterLink :to="`/product/${product.slug}`" :key="product.id" class="flex">
-				<div class="mr-3">
-					<img :src="product.mainImage" :alt="product.title" class="w-20 h-20 object-contain" />
-				</div>
-				<div>
-					<p
-						class="font-normal text-sm tracking-[0.4px] text-gray-500 my-[5px] max-[500px]:my-1 max-[500px]:text-xs"
-					>
-						{{ product.title.substring(0, 50) }}
-					</p>
-					<p class="font-medium text-base max-[500px]:text-sm text-black">
-						{{ product.price.toLocaleString() }} UZS
-					</p>
-				</div>
-			</RouterLink>
+			<div v-for="item in filteredProducts" :key="item.id" class="[&:not(:last-child)]:mb-3 p-3">
+				<RouterLink :to="`/product/${item.slug}`" @click="search = ''">
+					<div class="flex">
+						<div class="w-20 h-20 overflow-hidden">
+							<img :src="item.mainImage" :alt="item.slug" class="object-contain w-full h-full" />
+						</div>
+						<div class="ml-5">
+							<p class="mb-1 text-lg font-semibold max-lg:text-sm">
+								{{ item.title.split(' ').slice(0, 3).join(' ') }}
+							</p>
+							<p class="text-base font-normal max-lg:text-xs">
+								{{ item.price.toLocaleString() }} Uzs
+							</p>
+						</div>
+					</div>
+				</RouterLink>
+			</div>
 		</div>
 	</div>
 </template>
@@ -65,7 +58,6 @@ export default {
 	data() {
 		return {
 			search: '',
-			active: true,
 		}
 	},
 	computed: {

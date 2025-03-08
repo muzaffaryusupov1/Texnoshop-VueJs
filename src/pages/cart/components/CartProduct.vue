@@ -1,3 +1,4 @@
+p
 <template>
 	<div
 		class="rounded-md py-6 px-5 bg-white max-md:py-4 max-md:px-4 max-sm:py-3 max-sm:px-2 max-[420px]:p-0"
@@ -15,7 +16,7 @@
 					<img :src="item.mainImage" alt="product img" class="w-full h-full object-contain" />
 				</div>
 			</RouterLink>
-			<div class="w-full relative">
+			<div class="flex-auto">
 				<p
 					class="font-medium text-base leading-[137%] text-black max-md:text-sm max-md:leading-[100%] mr-3 max-[420px]:text-xs"
 				>
@@ -29,20 +30,29 @@
 				<div class="w-[100px] mt-3 max-sm:w-[80px]">
 					<ButtonRed class="max-sm:text-sm" @click="removeFromCart(item)">O'chirish</ButtonRed>
 				</div>
+			</div>
+			<div class="flex flex-col items-end max-sm:justify-end">
 				<p
-					class="font-medium text-base leading-[137%] text-black max-md:text-sm max-md:leading-[120%] max-[420px]:text-xs absolute lg:top-0 right-0 bottom-0"
+					class="font-medium text-base leading-[137%] mb-3 max-sm:mb-1 text-black max-md:text-sm max-md:leading-[120%] max-[420px]:text-xs"
 				>
 					{{ item.price.toLocaleString() }} UZS
 				</p>
+				<Counter
+					:count="item?.qty"
+					:onIncrement="() => handleIncrement(item?.id)"
+					:onDecrement="() => handleDecrement(item?.id)"
+				/>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import { Counter } from '@/components'
 import { toastify } from '@/utils/helpers'
 
 export default {
+	components: { Counter },
 	props: {
 		items: {
 			type: Object,
@@ -53,6 +63,12 @@ export default {
 		removeFromCart(item) {
 			this.$store.commit('removeFromCart', item)
 			toastify("Savatdan o'chirildi", 'error')
+		},
+		handleIncrement(id) {
+			this.$store.commit('increment', id)
+		},
+		handleDecrement(id) {
+			this.$store.commit('decrement', id)
 		},
 	},
 }

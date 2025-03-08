@@ -7,23 +7,29 @@
 						<button @click="toggleModal" class="w-7 h-7 hidden max-sm:block">
 							<MobileIcon />
 						</button>
-						<RouterLink :to="{ name: 'home' }">
-							<img src="/images/logo.png" alt="site logo" class="w-28 h-8 lg:w-40 lg:h-12" />
+						<RouterLink :to="{ name: 'home' }" class="flex items-center mr-8">
+							<h2 class="text-xl text-black font-medium select-none">MuraShop</h2>
+							<img src="/images/site-icon.png" alt="site icon" class="w-6 h-6 select-none" />
 						</RouterLink>
 					</div>
 
-					<div v-if="products === null">Loading...</div>
-					<SearchModal :searchModal="searchModal" :products="products" v-else />
+					<div class="relative">
+						<div v-if="products === null">Loading...</div>
+						<SearchModal v-else :products="products" :searchModal="searchModal" />
+					</div>
 
 					<div class="flex items-center gap-x-6 max-md:gap-4">
 						<button
-							type="button"
-							aria-label="input-search"
-							title="Search..."
-							@click="searchModal = !searchModal"
-							class="max-sm:block hidden"
+							:class="!searchModal ? 'hidden' : 'relative hidden max-md:block z-50'"
+							@click="searchModal = false"
 						>
 							<SearchIcon />
+						</button>
+						<button
+							:class="searchModal ? 'hidden' : 'relative z-[9999999999] hidden max-md:block'"
+							@click="searchModal = true"
+						>
+							<CloseIcon class="fill-white" />
 						</button>
 
 						<RouterLink :to="{ name: 'signin' }">
@@ -91,8 +97,7 @@ export default {
 	data() {
 		return {
 			modal: false,
-			searchModal: false,
-			search: '',
+			searchModal: true,
 		}
 	},
 	methods: {

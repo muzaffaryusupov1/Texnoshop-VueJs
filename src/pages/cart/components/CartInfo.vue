@@ -41,7 +41,7 @@
 			</span>
 		</div>
 
-		<Button>Buyurtma berish</Button>
+		<Button class="mt-3">Buyurtma berish</Button>
 
 		<div class="flex gap-2 p-5 max-md:hidden">
 			<span>
@@ -76,6 +76,13 @@ export default {
 		items: {
 			type: Object,
 			required: true,
+		},
+	},
+	watch: {
+		items(obj) {
+			const subtotal = (this.subtotal = obj.reduce((a, b) => a + b.oldPrice * b.qty, 0))
+			const discount = (this.discount = obj.reduce((a, b) => a + (b.oldPrice - b.price) * b.qty, 0))
+			const total = (this.total = obj.reduce((a, b) => a + b.price * b.qty, 0))
 		},
 	},
 }

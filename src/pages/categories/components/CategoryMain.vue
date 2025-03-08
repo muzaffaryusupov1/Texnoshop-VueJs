@@ -1,12 +1,13 @@
 <template>
 	<div class="my-6">
 		<div
-			class="flex items-center justify-between border border-solid border-gray-300 rounded-md py-[22px] px-[19px] max-lg:p-4 max-md:py-4 max-md:px-4 max-sm:py-3 max-sm:px-2"
+			class="flex items-center justify-between bg-white border border-solid border-gray-300 rounded-md py-[22px] px-[19px] max-lg:p-4 max-md:py-4 max-md:px-4 max-sm:py-3 max-sm:px-2"
 		>
 			<div v-if="products && categories === null">Loading...</div>
 			<h2 class="font-normal text-base text-black max-md:text-sm max-sm:hidden" v-else>
-				{{ products?.length }} items in
+				{{ products?.length }} ta mahsulot
 				<span class="font-bold">{{ categories?.find(item => item.id == categoryId)?.title }}</span>
+				da
 			</h2>
 			<div>
 				<button
@@ -182,6 +183,7 @@ export default {
 				brand_arr: getIds(query.brand_id),
 				sortBy: query.sortBy,
 			})
+			this.categoryId = params.id.split('-').at(-1)
 		},
 	},
 }

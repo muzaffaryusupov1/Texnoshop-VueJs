@@ -32,7 +32,20 @@
 							<CloseIcon class="fill-white" />
 						</button>
 
-						<RouterLink :to="{ name: 'signin' }">
+						<RouterLink v-if="isAuth" :to="{ name: 'profile' }">
+							<button
+								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
+							>
+								<span>
+									<ProfileIcon class="group-hover:fill-primary" />
+								</span>
+								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
+									Profile
+								</span>
+							</button>
+						</RouterLink>
+
+						<RouterLink v-else :to="{ name: 'signin' }">
 							<button
 								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
 							>
@@ -112,6 +125,7 @@ export default {
 		...mapState({
 			categories: state => state.categories.categories,
 			products: state => state.products.data,
+			isAuth: state => state.auth.isAuth,
 		}),
 	},
 	mounted() {

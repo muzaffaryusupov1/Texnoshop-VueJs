@@ -41,7 +41,7 @@
 			</span>
 		</div>
 
-		<Button class="mt-3">Buyurtma berish</Button>
+		<Button class="mt-3" @click="handleCheckout">Buyurtma berish</Button>
 
 		<div class="flex gap-2 p-5 max-md:hidden">
 			<span>
@@ -64,6 +64,9 @@
 </template>
 
 <script>
+import { toastify } from '@/utils/helpers'
+import { mapState } from 'vuex'
+
 export default {
 	data() {
 		return {
@@ -78,11 +81,28 @@ export default {
 			required: true,
 		},
 	},
+	computed: {
+		...mapState({
+			user: state => state.auth.user,
+		}),
+	},
 	watch: {
 		items(obj) {
 			const subtotal = (this.subtotal = obj.reduce((a, b) => a + b.oldPrice * b.qty, 0))
 			const discount = (this.discount = obj.reduce((a, b) => a + (b.oldPrice - b.price) * b.qty, 0))
 			const total = (this.total = obj.reduce((a, b) => a + b.price * b.qty, 0))
+		},
+	},
+	methods: {
+		handleCheckout() {
+			if (this.user) {
+				console.log(this.user)
+
+				this.$router.push('/checkout')
+			} else {
+				this.$router.push('/signin')
+				toastify("Ro'yxatdan o'tmagansiz", 'error')
+			}
 		},
 	},
 }

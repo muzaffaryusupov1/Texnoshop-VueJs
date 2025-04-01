@@ -56,8 +56,8 @@ export default {
 	data() {
 		return {
 			params: new URL(window.location.href).searchParams,
-			brand_id: new URL(window.location.href).searchParams.get('brand_id'),
-			filteredList: getIds(new URL(window.location.href).searchParams.get('brand_id')),
+			brand_id: this.$route.query.brand_id,
+			filteredList: getIds(this.$route.query.brand_id),
 		}
 	},
 	props: {
@@ -77,8 +77,7 @@ export default {
 			if (target.checked) {
 				if (this.brand_id) {
 					this.$router.push({
-						query: { brand_id: id },
-						params: { brand_id: this.brand_id + ',' + id },
+						query: { brand_id: this.brand_id + ',' + id },
 					})
 				} else {
 					this.$router.push({ query: { brand_id: id } })
@@ -92,6 +91,11 @@ export default {
 					},
 				})
 			}
+		},
+	},
+	watch: {
+		$route({ query }) {
+			this.brand_id = query.brand_id
 		},
 	},
 }

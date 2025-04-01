@@ -15,7 +15,6 @@
 		</div>
 		<div
 			class="grid grid-cols-5 gap-1 max-[1120px]:gap-3 max-[1120px]:grid-cols-4 max-[920px]:grid-cols-3 max-[720px]:grid-cols-2 xl:gap-4"
-			v-auto-animate
 		>
 			<div
 				v-for="item of items"

@@ -5,7 +5,6 @@
 			:id="label"
 			class="block px-2.5 pb-2.5 pt-4 w-[300px] max-sm:px-1.5 max-sm:pb-1.5 max-md:pt-3 max-sm:pt-1.5 text-sm text-gray-600 bg-transparent rounded-lg border-1 border-gray-500 border-solid appearance-none dark:text-black dark:border-gray-400 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer ease-in-out duration-300"
 			placeholder=" "
-			required
 			@input="updateInput"
 			:value="modelValue"
 		/>

@@ -1,5 +1,8 @@
 import { toast } from 'vue3-toastify'
 
+export const getLocale = key => localStorage.getItem(key)
+export const setLocale = (key, value) => localStorage.setItem(key, value)
+
 export const unslugify = slug =>
 	slug
 		.replace(/\-/g, ' ')

@@ -1,13 +1,16 @@
 import { CategoryMain } from '@/pages/categories/components'
+import store from '@/store'
 import {
 	CartViews,
 	CategoryViews,
+	CheckoutViews,
 	HomeViews,
 	ProductViews,
 	SignInViews,
 	SignUpViews,
 	WishListViews,
 } from '@/views'
+import ProfileViews from '@/views/ProfileViews.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -54,7 +57,27 @@ const router = createRouter({
 			name: 'wishlist',
 			component: WishListViews,
 		},
+		{
+			path: '/checkout',
+			name: 'checkout',
+			component: CheckoutViews,
+		},
+		{
+			path: '/profile',
+			name: 'profile',
+			component: ProfileViews,
+		},
 	],
+})
+
+router.beforeEach((to, from, next) => {
+	if ((to.path === '/signin') | (to.path === '/signup') && store.state.auth.token) {
+		next('/')
+	} else if ((to.path === '/signin') | (to.path === '/signup') && store.state.auth.isAuth) {
+		next('/')
+	} else {
+		next()
+	}
 })
 
 export default router

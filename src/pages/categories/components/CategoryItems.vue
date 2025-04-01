@@ -46,10 +46,18 @@
 			</RouterLink>
 
 			<button
-				class="absolute top-0 right-[-10px] m-5 p-2 border border-solid border-gray-300 rounded-md max-[540px]:hidden"
+				class="absolute top-0 right-[-10px] m-5 p-2 border border-solid border-gray-300 rounded-full max-[540px]:p-0.5 max-[540px]:m-0 max-[540px]:right-3 max-[540px]:top-3"
 				@click="addToFavorite(product)"
 			>
 				<HeartIcon />
+			</button>
+			<button
+				class="group transition-all ease-out duration-300 hover:bg-primary absolute bottom-0 right-[-10px] m-5 p-1.5 border border-solid border-gray-300 rounded-md max-[540px]:p-0.5 max-[540px]:m-0 max-[540px]:right-3 max-[540px]:top-10 max-[540px]:bottom-auto max-sm:hover:bg-transparent"
+				@click="addToCart(product)"
+			>
+				<CartIcon
+					class="fill-primary group-hover:fill-white max-sm:group-hover:fill-gray-500 max-sm:fill-gray-500"
+				/>
 			</button>
 		</div>
 	</div>
@@ -76,6 +84,10 @@ export default {
 		addToFavorite(product) {
 			this.$store.commit('addToFavorite', product)
 			toastify("Sevimlilarga qo'shildi", 'success')
+		},
+		addToCart(product) {
+			this.$store.commit('addToCart', product)
+			toastify("Savatga qo'shildi", 'success')
 		},
 	},
 }

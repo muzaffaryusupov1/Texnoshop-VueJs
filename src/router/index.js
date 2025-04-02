@@ -1,4 +1,5 @@
 import { CategoryMain } from '@/pages/categories/components'
+import ProfileOrders from '@/pages/profile/ProfileOrders.vue'
 import store from '@/store'
 import {
 	CartViews,
@@ -66,6 +67,12 @@ const router = createRouter({
 			path: '/profile',
 			name: 'profile',
 			component: ProfileViews,
+			children: [
+				{
+					path: '/profile/orders',
+					component: ProfileOrders,
+				},
+			],
 		},
 	],
 })
@@ -74,6 +81,11 @@ router.beforeEach((to, from, next) => {
 	if ((to.path === '/signin') | (to.path === '/signup') && store.state.auth.token) {
 		next('/')
 	} else if ((to.path === '/signin') | (to.path === '/signup') && store.state.auth.isAuth) {
+		next('/')
+	} else if (
+		(to.path === '/profile') | (to.path === '/profile/orders') &&
+		!store.state.auth.isAuth
+	) {
 		next('/')
 	} else {
 		next()

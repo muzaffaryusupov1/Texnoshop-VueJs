@@ -70,7 +70,7 @@ import { mapState } from 'vuex'
 export default {
 	computed: {
 		...mapState({
-			products: state => state.categories.products,
+			products: state => state.categories.products?.items,
 			isLoading: state => state.categories.isLoading,
 		}),
 	},

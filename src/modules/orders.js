@@ -4,6 +4,7 @@ const state = {
 	isLoading: false,
 	error: null,
 	orders: null,
+	userOrders: null,
 }
 
 const mutations = {
@@ -16,6 +17,18 @@ const mutations = {
 	createOrder(state, payload) {
 		state.orders = payload
 	},
+	getUserOrdersStart(state) {
+		state.isLoading = true
+		state.error = null
+		state.userOrders = null
+	},
+	getUserOrdersSuccess(state, payload) {
+		state.isLoading = false
+		state.userOrders = payload
+	},
+	getUserOrdersFailure(state) {
+		state.isLoading = false
+	},
 }
 
 const actions = {
@@ -25,7 +38,6 @@ const actions = {
 			OrdersService.orders(data)
 				.then(response => {
 					context.commit('loadingEnd')
-					console.log(response)
 					context.commit('createOrder', response.data)
 					resolve(response.data)
 				})
@@ -35,6 +47,20 @@ const actions = {
 				})
 				.finally(() => {
 					context.commit('loadingEnd')
+				})
+		})
+	},
+	getUserOrders(context) {
+		return new Promise(resolve => {
+			context.commit('getUserOrdersStart')
+			OrdersService.userOrders()
+				.then(response => {
+					context.commit('getUserOrdersSuccess', response.data)
+					resolve(response.data)
+				})
+				.catch(error => {
+					context.commit('getUserOrdersFailure')
+					console.log(error)
 				})
 		})
 	},

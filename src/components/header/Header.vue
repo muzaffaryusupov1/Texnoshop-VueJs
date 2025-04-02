@@ -86,7 +86,7 @@
 					</div>
 
 					<Teleport to="#modal">
-						<div v-if="categories === null">Loading...</div>
+						<div v-if="categories === null"></div>
 						<Modal
 							v-else-if="modal"
 							:categories="categories[0]"

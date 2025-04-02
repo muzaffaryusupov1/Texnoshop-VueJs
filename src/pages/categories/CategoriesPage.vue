@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import { CategoryItems, CategorySidebar } from './components'
+import { CategorySidebar } from './components'
 
 export default {
-	components: { CategoryItems, CategorySidebar },
+	components: { CategorySidebar },
 }
 </script>

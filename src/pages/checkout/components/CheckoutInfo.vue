@@ -1,14 +1,18 @@
 <template>
-	<div class="bg-white border border-solid border-gray-300 h-fit p-10 rounded-lg">
-		<form class="checkout-info__form" @submit="handleChange($event)">
+	<div class="bg-white border border-solid border-gray-300 w-[600px] h-fit p-10 rounded-lg">
+		<form class="checkout-info__form" @submit="handleSubmit($event)">
 			<div class="flex flex-col">
 				<label htmlFor="checkout-name" class="my-2 text-base font-medium text-black">
 					Ism va Familiya
 				</label>
-				<div class="flex gap-2">
-					<Input type="text" label="Ism" v-model="data.firstName" name="firstName" />
-					<Input type="text" label="Familiya" v-model="data.lastName" name="lastName" />
-				</div>
+				<input
+					class="border border-solid border-gray-400 focus:border-gray-600 shadow-sm p-3 rounded-md"
+					type="text"
+					placeholder="Ism va Familiya"
+					id="checkout-name"
+					:value="user.name"
+					name="fullName"
+				/>
 			</div>
 			<div class="flex flex-col">
 				<label htmlFor="checkout-num" class="my-2 text-base font-medium text-black"
@@ -45,15 +49,16 @@
 			<div class="flex flex-col gap-4 mt-3">
 				<div class="checkout-info__col">
 					<input
+						@change="handleChange($event)"
 						type="radio"
 						id="checkout-price"
 						name="payment"
 						defaultChecked
 						class="ml-[10px] border border-solid border-primary w-8 h-5"
 					/>
-					<label htmlFor="checkout-cash" class="my-2 text-base font-medium text-black"
-						>Naqd pul</label
-					>
+					<label htmlFor="checkout-cash" class="my-2 text-base font-medium text-black">
+						Naqd pul
+					</label>
 					<input
 						type="radio"
 						id="checkout-cash"
@@ -61,26 +66,27 @@
 						disabled
 						class="ml-[10px] border border-solid border-primary w-8 h-5"
 					/>
-					<label htmlFor="checkout-price" class="my-2 text-base font-medium text-black"
-						>Karta Orqali To'lash</label
-					>
+					<label htmlFor="checkout-price" class="my-2 text-base font-medium text-black">
+						Karta Orqali To'lash
+					</label>
 				</div>
+
 				<!-- <div class="checkout-info__card">
-						<label htmlFor="number"
-							>Card Number
-							<input class="checkout-info__card__num" id="number" />
-						</label>
-						<label htmlFor="number"
-							>Expiration
-							<input class="checkout-info__card__year" type="tel" id="year" />
-						</label>
-					</div> -->
+					<label htmlFor="number"
+						>Card Number
+						<input class="checkout-info__card__num" id="number" />
+					</label>
+					<label htmlFor="number"
+						>Expiration
+						<input class="checkout-info__card__year" type="tel" id="year" />
+					</label>
+				</div> -->
 
 				<div class="flex items-center justify-between">
-					<div class="w-64">
+					<div class="w-60">
 						<Button @click="$router.push('/')">Bosh sahifaga qaytish</Button>
 					</div>
-					<div class="w-64">
+					<div class="w-60">
 						<Button type="submit">To'lovni qilish</Button>
 					</div>
 				</div>
@@ -97,6 +103,7 @@ export default {
 	data() {
 		return {
 			data: {},
+			pay: false,
 		}
 	},
 	computed: {
@@ -106,7 +113,7 @@ export default {
 		}),
 	},
 	methods: {
-		handleChange(e) {
+		handleSubmit(e) {
 			e.preventDefault()
 			const { target } = e
 
@@ -139,6 +146,7 @@ export default {
 							if (response) {
 								this.$router.push('/')
 								toastify('Haridingiz qabul qilindi', 'success')
+								this.$store.commit('removeAllFromCart')
 							}
 						})
 						.catch(err => {

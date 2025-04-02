@@ -18,8 +18,8 @@
 				class="flex flex-col items-center justify-center m-auto gap-5 max-w-[300px] max-md:max-w-[240px] max-sm:max-w-[210px] max-md:gap-3 max-sm:gap-2.5"
 				@submit="onFinish"
 			>
-				<Input v-model="data.email" :label="'Email'" :type="'email'" />
-				<Input v-model="data.password" :label="'Parol'" :type="'password'" />
+				<Input v-model="data.email" :label="'Email'" :type="'email'" name="email" />
+				<Input v-model="data.password" :label="'Parol'" name="password" :type="'password'" />
 
 				<Button :disabled="loading">
 					<div class="flex items-center justify-center" v-if="loading"><LoadingSpinner /></div>

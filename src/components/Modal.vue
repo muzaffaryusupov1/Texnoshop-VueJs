@@ -20,12 +20,17 @@
 					<span>
 						<Avatar />
 					</span>
-					<div class="flex gap-2">
+					<div class="flex gap-2" v-if="!isAuth">
 						<RouterLink :to="{ name: 'signin' }" @click="$emit('close')">Kirish</RouterLink>
 						<span>|</span>
 						<RouterLink :to="{ name: 'signup' }" @click="$emit('close')">
 							Ro'yxatdan o'tish
 						</RouterLink>
+					</div>
+					<div class="flex gap-2" v-else>
+						<RouterLink :to="{ name: 'profile' }" @click="$emit('close')">{{
+							user.name
+						}}</RouterLink>
 					</div>
 				</div>
 			</div>
@@ -76,6 +81,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
 	props: {
 		modal: {
@@ -86,6 +93,12 @@ export default {
 			type: Object,
 			required: true,
 		},
+	},
+	computed: {
+		...mapState({
+			isAuth: state => state.auth.isAuth,
+			user: state => state.auth.user,
+		}),
 	},
 }
 </script>

@@ -10,6 +10,7 @@ import ChevronRightIcon from './ChevronRightIcon.vue'
 import CloseIcon from './CloseIcon.vue'
 import CompanyIcon from './CompanyIcon.vue'
 import DeleteIcon from './DeleteIcon.vue'
+import ExitIcon from './ExitIcon.vue'
 import FacebookIcon from './FacebookIcon.vue'
 import FavouriteIcon from './FavouriteIcon.vue'
 import FilterIcon from './FilterIcon.vue'
@@ -64,4 +65,5 @@ export default [
 	FilterIcon,
 	TelegramIcon,
 	InstagramIcon,
+	ExitIcon,
 ]

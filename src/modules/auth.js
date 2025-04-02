@@ -4,15 +4,14 @@ import { getLocale, setLocale } from '@/utils/helpers'
 let userInitial = {
 	email: '',
 	password: '',
-	name: '',
-	surname: '',
+	fullName: '',
 	address: '',
 	phone: '',
 }
 
 let state = {
 	user: JSON.parse(localStorage.getItem('user')) || userInitial,
-	isAuth: !!JSON.parse(localStorage.getItem('user'))?.email || false,
+	isAuth: (JSON.parse(localStorage.getItem('user')) && getLocale('token')) || false,
 	loading: false,
 	token: getLocale('token') || '',
 	error: null,
@@ -35,21 +34,21 @@ const mutations = {
 	setLoadingEnd(state) {
 		state.loading = false
 	},
-	setIsAuth(state, { payload }) {
+	setIsAuth(state, payload) {
 		state.isAuth = payload
 	},
 	setUser(state, payload) {
 		state.user = setUserWithLocale(payload)
 	},
 	setLocale(state) {
-		state.user = setUserWithLocale([])
-		state.ещлут = setLocale([])
+		state.user = localStorage.removeItem('user')
+		state.token = localStorage.removeItem('token')
 	},
 	setToken(state, payload) {
 		state.token = addToken(payload)
 	},
 	setLoginUser(state, payload) {
-		state.user = payload
+		state.user = setUserWithLocale(payload)
 	},
 	setError(state, payload) {
 		state.error = payload
@@ -65,7 +64,9 @@ const actions = {
 			} else {
 				AuthService.register(user)
 					.then(response => {
-						context.commit('setIsAuth', user)
+						if (response.data.data) {
+							context.commit('setIsAuth', response.data.data)
+						}
 						context.commit('setUser', response.data.data)
 						context.commit('setLoadingEnd')
 						resolve(response.data.data)
@@ -86,6 +87,9 @@ const actions = {
 			context.commit('setLoadingStart')
 			AuthService.login(user)
 				.then(response => {
+					if (response.data.data) {
+						context.commit('setIsAuth', response.data.data)
+					}
 					context.commit('setToken', response.data.token)
 					context.commit('setLoginUser', response.data.data)
 					context.commit('setLoadingEnd')

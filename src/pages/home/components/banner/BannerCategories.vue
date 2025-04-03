@@ -1,10 +1,15 @@
 <template>
 	<div class="hidden w-[170px] h-full lg:w-[250px] md:block">
-		<div
-			v-if="categories === null"
-			class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-600 w-48 mb-4"
-		></div>
-		<ul v-for="category in categories" v-else :key="category.id">
+		<div v-if="isLoading">
+			<SkeletonLoader />
+			<SkeletonLoader />
+			<SkeletonLoader />
+			<SkeletonLoader />
+			<SkeletonLoader />
+			<SkeletonLoader />
+			<SkeletonLoader />
+		</div>
+		<ul v-for="category in categories" :key="category.id" v-else>
 			<li>
 				<RouterLink
 					:to="`/category/${category.slug}-${category.id}`"
@@ -18,12 +23,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-	props: {
-		categories: {
-			type: Object,
-			required: true,
-		},
+	computed: {
+		...mapState({
+			categories: state => state.categories.categories,
+			isLoading: state => state.categories.isLoading,
+		}),
 	},
 }
 </script>

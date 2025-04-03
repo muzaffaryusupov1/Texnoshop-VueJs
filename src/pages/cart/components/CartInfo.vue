@@ -83,7 +83,7 @@ export default {
 	},
 	computed: {
 		...mapState({
-			user: state => state.auth.user,
+			isAuth: state => state.auth.isAuth,
 		}),
 	},
 	watch: {
@@ -95,13 +95,11 @@ export default {
 	},
 	methods: {
 		handleCheckout() {
-			if (this.user) {
-				console.log(this.user)
-
+			if (this.isAuth) {
 				this.$router.push('/checkout')
 			} else {
-				this.$router.push('/signin')
 				toastify("Ro'yxatdan o'tmagansiz", 'error')
+				this.$router.push('/signin')
 			}
 		},
 	},

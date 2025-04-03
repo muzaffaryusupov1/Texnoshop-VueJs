@@ -51,6 +51,7 @@ export default {
 	computed: {
 		...mapState({
 			data: state => state.products.data,
+			isLoading: state => state.products.isLoading,
 			items: state => state.cart.items,
 			favoriteItems: state => state.favorites.items,
 		}),

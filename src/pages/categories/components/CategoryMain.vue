@@ -160,7 +160,7 @@ export default {
 			}
 		},
 		handleBrandDelete(id) {
-			this.$router.push({
+			this.$router.replace({
 				query: { brand_id: this.fitleredBrands.filter(item => item !== id).join(',') },
 			})
 		},
@@ -187,7 +187,7 @@ export default {
 		},
 	},
 	mounted() {
-		this.$store.dispatch('productsWithBrandsId', {
+		const res = this.$store.dispatch('productsWithBrandsId', {
 			category_id: this.categoryId,
 			brand_arr: this.fitleredBrands,
 			sortBy: this.sortBy,
@@ -201,6 +201,8 @@ export default {
 				category_id: params.id.split('-').at(-1),
 				brand_arr: getIds(query.brand_id),
 				sortBy: query.sortBy,
+				page: this.currentPage,
+				limit: this.itemPerPage,
 			})
 			this.categoryId = params.id.split('-').at(-1)
 		},

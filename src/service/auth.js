@@ -7,6 +7,9 @@ const AuthService = {
 	login(data) {
 		return axios.post('/auth', data)
 	},
+	getUser() {
+		return axios.get('/users')
+	},
 }
 
 export default AuthService

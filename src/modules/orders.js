@@ -50,12 +50,15 @@ const actions = {
 				})
 		})
 	},
-	getUserOrders(context) {
+	getUserOrders(context, userId) {
 		return new Promise(resolve => {
 			context.commit('getUserOrdersStart')
 			OrdersService.userOrders()
 				.then(response => {
-					context.commit('getUserOrdersSuccess', response.data)
+					context.commit(
+						'getUserOrdersSuccess',
+						response.data.filter(id => userId === id.user_id)
+					)
 					resolve(response.data)
 				})
 				.catch(error => {

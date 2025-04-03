@@ -53,6 +53,9 @@ const mutations = {
 	setError(state, payload) {
 		state.error = payload
 	},
+	getUser(state, payload) {
+		state.user = payload
+	},
 }
 
 const actions = {
@@ -68,6 +71,7 @@ const actions = {
 							context.commit('setIsAuth', response.data.data)
 						}
 						context.commit('setUser', response.data.data)
+						context.commit('setToken', response.data.token)
 						context.commit('setLoadingEnd')
 						resolve(response.data.data)
 					})
@@ -103,6 +107,32 @@ const actions = {
 				.finally(() => {
 					context.commit('setLoadingEnd')
 				})
+		})
+	},
+	getUser(context) {
+		return new Promise(resolve => {
+			AuthService.getUser()
+				.then(response => {
+					console.log(response)
+					resolve(response.data)
+				})
+				.catch(error => {
+					console.log(error)
+				})
+		})
+	},
+	logout(context) {
+		return new Promise(resolve => {
+			context.commit('setLoadingStart')
+			try {
+				context.commit('setLocale')
+				context.commit('setLoadingEnd')
+				context.commit('setIsAuth', false)
+				resolve()
+			} catch (error) {
+				context.commit('setLoadingEnd')
+				context.commit('setError', error.code)
+			}
 		})
 	},
 }

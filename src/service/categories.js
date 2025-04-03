@@ -12,6 +12,7 @@ const CategoriesService = {
 		return axios.get(brandsList)
 	},
 	productsFilterWithBrandId({ category_id, brand_arr, sortBy, page, limit }) {
+		console.log(brand_arr)
 		return axios.get(productsFilter(brand_arr, page, limit), {
 			params: {
 				category_id,

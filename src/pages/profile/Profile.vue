@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="flex max-sm:flex-col my-7">
-			<div class="flex flex-col w-96 rounded-xl mr-5 py-3 px-1.5 gap-3">
+			<div class="flex flex-col w- rounded-xl mr-5 py-3 px-1.5 gap-3">
 				<RouterLink
 					to="/profile"
 					class="text-base font-normal px-2 py-0.5 transition w-min"
@@ -13,8 +13,9 @@
 					to="/profile/orders"
 					class="text-base font-normal px-2 py-0.5 transition w-min"
 					:class="$route.path === '/profile/orders' && ' text-primary'"
-					>BUYURTMALAR</RouterLink
 				>
+					BUYURTMALAR
+				</RouterLink>
 			</div>
 
 			<ProfileOverview v-if="$route.path === '/profile'" />
@@ -29,8 +30,5 @@ import ProfileOverview from './ProfileOverview.vue'
 
 export default {
 	components: { ProfileOverview },
-	mounted() {
-		this.$store.dispatch('getUserOrders')
-	},
 }
 </script>

@@ -11,6 +11,9 @@ import { Footer, Header } from '@/components/index.js'
 
 export default {
 	components: { Header, Footer },
+	mounted() {
+		this.$store.dispatch('getUser')
+	},
 }
 </script>
 

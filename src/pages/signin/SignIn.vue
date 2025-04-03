@@ -59,6 +59,7 @@ export default {
 	methods: {
 		onFinish(e) {
 			e.preventDefault()
+			console.log(this.data)
 			this.$store
 				.dispatch('login', this.data)
 				.then(response => {

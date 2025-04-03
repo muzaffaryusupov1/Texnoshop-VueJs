@@ -1,5 +1,6 @@
 <template>
-	<swiper class="w-[calc(100%-250px)] flex-auto h-full" :slides-per-view="1">
+	<SkeletonLoader v-if="isLoading" class="w-full" :myClass="'h-full'" />
+	<swiper class="w-[calc(100%-250px)] flex-auto h-full" :slides-per-view="1" v-else>
 		<swiperSlide class="slider-slide" v-for="banners in data" :key="banners.id">
 			<div class="absolute w-full h-full">
 				<img :src="banners.image" alt="banner img" class="w-full h-full object-cover" />
@@ -29,15 +30,11 @@ import { mapState } from 'vuex'
 
 export default {
 	components: { Swiper, SwiperSlide },
-	props: {
-		categories: {
-			type: Object,
-			required: true,
-		},
-	},
 	computed: {
 		...mapState({
 			data: state => state.banners.data,
+			categories: state => state.categories.categories,
+			isLoading: state => state.categories.isLoading,
 		}),
 	},
 }

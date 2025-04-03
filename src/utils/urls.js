@@ -9,7 +9,7 @@ export const smartphonesList = `/products?category_id=1`
 export const tvList = `/products?category_id=11`
 
 export const productsFilter = (arr, page, limit) =>
-	`/products?page=${page}&limit=${limit}?${arr.map(id => `brand_id[]=${id}`).join('&')}`
+	`/products?page=${page}&limit=${limit}&${arr.map(id => `brand_id[]=${id}`).join('&')}`
 export const brandsList = '/brands'
 
 export const productWithCategoryId = id => `/products?category_id=${id}`

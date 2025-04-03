@@ -1,4 +1,5 @@
 import { CategoryMain } from '@/pages/categories/components'
+import NotFoundPage from '@/pages/notFound/NotFoundPage.vue'
 import ProfileOrders from '@/pages/profile/ProfileOrders.vue'
 import store from '@/store'
 import {
@@ -74,6 +75,11 @@ const router = createRouter({
 				},
 			],
 		},
+		{
+			path: '/:pathMatch(.*)*',
+			name: 'notfound',
+			component: NotFoundPage,
+		},
 	],
 })
 
@@ -86,6 +92,8 @@ router.beforeEach((to, from, next) => {
 		(to.path === '/profile') | (to.path === '/profile/orders') &&
 		!store.state.auth.isAuth
 	) {
+		next('/')
+	} else if (to.path === '/checkout' && !store.state.auth.isAuth) {
 		next('/')
 	} else {
 		next()

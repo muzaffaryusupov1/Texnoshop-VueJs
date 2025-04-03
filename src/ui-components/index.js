@@ -6,5 +6,18 @@ import CartList from './CartList.vue'
 import EmptyPage from './EmptyPage.vue'
 import Input from './Input.vue'
 import LoadingSpinner from './LoadingSpinner.vue'
+import ProductSkeleton from './ProductSkeleton.vue'
+import SkeletonLoader from './SkeletonLoader.vue'
 
-export default [Input, Button, ButtonWhite, ButtonRed, Cart, CartList, EmptyPage, LoadingSpinner]
+export default [
+	Input,
+	Button,
+	ButtonWhite,
+	ButtonRed,
+	Cart,
+	CartList,
+	EmptyPage,
+	LoadingSpinner,
+	SkeletonLoader,
+	ProductSkeleton,
+]

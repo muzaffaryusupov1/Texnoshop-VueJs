@@ -1,10 +1,8 @@
 <template>
 	<div
-		class="px-5 mt-6 mr-7 mb-6 ml-0 max-md:hidden max-xl:mr-5 max-lg:mr-2 max-xl:px-4 max-lg:px-2"
+		class="px-5 mt-6 mr-7 mb-6 ml-0 max-md:hidden max-xl:mr-5 max-lg:mr-2 max-xl:px-4 max-lg:px-2 bg-white"
 	>
-		<div
-			class="border-t border-r-0 border-b-0 border-l-0 border-solid border-gray-300 py-[14px] w-[240px] max-xl:w-[220px] max-[1130px]:w-[170px] max-lg:w-[150px]"
-		>
+		<div class="py-[14px] w-[240px] max-xl:w-[220px] max-[1130px]:w-[170px] max-lg:w-[150px]">
 			<div class="flex flex-col gap-2 relative max-lg:gap-1.5">
 				<div class="flex items-center justify-between py-[14px] mb-[10px]">
 					<h2 class="font-semibold text-base text-black">Kataloglar</h2>

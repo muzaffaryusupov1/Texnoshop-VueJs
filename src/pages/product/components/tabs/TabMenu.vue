@@ -1,12 +1,7 @@
 <template>
 	<section class="my-6 max-md:my-3">
 		<div class="container">
-			<LoadingSpinner v-if="isLoading" />
-
-			<div
-				class="rounded-md border border-solid border-gray-300 shadow shadow-shadow-cc bg-white"
-				v-else
-			>
+			<div class="rounded-md border border-solid border-gray-300 shadow shadow-shadow-cc bg-white">
 				<TabsNavbar
 					:tabs="['Mahsulot tavsifi', 'Xususiyatlari']"
 					:selected="selected"

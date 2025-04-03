@@ -49,7 +49,6 @@
 			<div class="flex flex-col gap-4 mt-3">
 				<div class="checkout-info__col">
 					<input
-						@change="handleChange($event)"
 						type="radio"
 						id="checkout-price"
 						name="payment"

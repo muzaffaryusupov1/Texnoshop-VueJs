@@ -14,7 +14,7 @@
 					</div>
 
 					<div class="relative">
-						<div v-if="products === null">Loading...</div>
+						<template v-if="products === null"></template>
 						<SearchModal v-else :products="products" :searchModal="searchModal" />
 					</div>
 

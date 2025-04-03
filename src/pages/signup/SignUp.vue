@@ -48,18 +48,18 @@ export default {
 
 			if (this.data.password.length < 8) {
 				console.log('Error')
+			} else {
+				this.$store
+					.dispatch('register', this.data)
+					.then(response => {
+						if (response) {
+							this.$router.push('/')
+						}
+					})
+					.catch(err => {
+						console.log(err)
+					})
 			}
-
-			this.$store
-				.dispatch('register', this.data)
-				.then(response => {
-					if (response) {
-						this.$router.push('/')
-					}
-				})
-				.catch(err => {
-					console.log(err)
-				})
 		},
 	},
 }

@@ -1,6 +1,7 @@
 <template>
 	<div
 		class="w-[450px] h-[490px] flex flex-col gap-4 bg-white border border-gray-300 py-3 px-2 rounded-lg overflow-y-scroll scroll max-md:w-full max-md:h-80 max-sm:px-1 max-md:gap-2 max-sm:gap-1 max-sm:py-2"
+		:class="items.length >= 2 ? 'max-[500px]:h-40' : 'max-[500px]:h-full'"
 	>
 		<div v-if="!!items.length">
 			<div

@@ -57,7 +57,6 @@ export default {
 		return {
 			params: new URL(window.location.href).searchParams,
 			brand_id: this.$route.query.brand_id,
-			filteredList: getIds(this.$route.query.brand_id),
 		}
 	},
 	props: {
@@ -71,26 +70,28 @@ export default {
 			categories: state => state.categories.categories,
 			brands: state => state.categories.brands,
 		}),
+		filteredList() {
+			return getIds(this.$route.query.brand_id)
+		},
 	},
 	methods: {
 		handleBrand(id, { target }) {
+			const current = getIds(this.$route.query.brand_id)
+
+			let updated = []
+
 			if (target.checked) {
-				if (this.brand_id) {
-					this.$router.push({
-						query: { brand_id: this.brand_id + ',' + id },
-					})
-				} else {
-					this.$router.push({ query: { brand_id: id } })
-				}
-			} else if (target.checked == false) {
-				this.$router.push({ query: { brand_id: '' } })
+				updated = [...new Set([...current, id])]
 			} else {
-				this.$router.push({
-					query: {
-						brand_id: this.brand_id.filter(item => item !== id).join(','),
-					},
-				})
+				updated = current.filter(item => item !== id)
 			}
+
+			this.$router.replace({
+				query: {
+					...this.$route.query,
+					brand_id: updated.join(','),
+				},
+			})
 		},
 	},
 	watch: {

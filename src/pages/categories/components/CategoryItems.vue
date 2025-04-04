@@ -1,5 +1,5 @@
 <template>
-	<div v-if="isLoading" class="flex items-center justify-center h-96">
+	<div v-if="isLoading" class="flex items-center justify-center h-96 max-sm:h-32">
 		<LoadingSpinner />
 	</div>
 

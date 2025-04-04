@@ -29,14 +29,16 @@
 							<CloseIcon class="fill-white" />
 						</button>
 
-						<RouterLink v-if="isAuth" :to="{ name: 'profile' }" class="max-sm:hidden">
+						<RouterLink v-if="isAuth" :to="{ name: 'profile' }">
 							<button
 								class="flex max-md:flex-col items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
 							>
 								<span>
 									<ProfileIcon class="group-hover:fill-primary" />
 								</span>
-								<span class="font-normal text-xs group-hover:text-[#0d6efd]"></span>
+								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-sm:hidden">{{
+									user.name
+								}}</span>
 							</button>
 						</RouterLink>
 
@@ -47,7 +49,9 @@
 								<span>
 									<ProfileIcon class="group-hover:fill-primary" />
 								</span>
-								<span class="font-normal text-xs group-hover:text-[#0d6efd]">Kirish</span>
+								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-sm:hidden">
+									Kirish
+								</span>
 							</button>
 						</RouterLink>
 

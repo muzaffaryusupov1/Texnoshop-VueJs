@@ -70,7 +70,6 @@ const actions = {
 					resolve(response.data)
 				})
 				.catch(err => {
-					console.log('ERROR', err)
 					context.commit('getProductsDetailFailure')
 				})
 		})

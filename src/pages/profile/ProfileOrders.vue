@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full">
-		<h1 class="text-2xl text-black font-medium mb-5">Buyurtmalarim</h1>
+		<h1 class="text-2xl text-black font-medium mb-5 max-sm:mb-2.5 max-sm:text-xl">Buyurtmalarim</h1>
 
 		<div v-if="isLoading">
 			<SkeletonLoader />
@@ -31,11 +31,9 @@
 </template>
 
 <script>
-import { ContentLoader } from 'vue-content-loader'
 import { mapState } from 'vuex'
 
 export default {
-	components: { ContentLoader },
 	computed: {
 		...mapState({
 			userOrders: state => state.orders.userOrders,
@@ -45,7 +43,6 @@ export default {
 	},
 	mounted() {
 		this.$store.dispatch('getUserOrders', this.user.id)
-		console.log(this.userOrders)
 	},
 }
 </script>

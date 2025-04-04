@@ -3,7 +3,7 @@
 		<div
 			class="flex items-center justify-between bg-white border border-solid border-gray-300 rounded-md py-[22px] px-[19px] max-lg:p-4 max-md:py-4 max-md:px-4 max-sm:py-3 max-sm:px-2"
 		>
-			<div v-if="products && categories === null">Loading...</div>
+			<SkeletonLoader v-if="isLoading" class="w-96" :myClass="'mb-0'" />
 			<h2 class="font-normal text-base text-black max-md:text-sm max-sm:hidden" v-else>
 				{{ products?.items.length }} ta mahsulot
 				<span class="font-bold">{{ categories?.find(item => item.id == categoryId)?.title }}</span>
@@ -68,7 +68,7 @@
 		<div class="mt-5 flex items-center gap-2 flex-wrap">
 			<button
 				class="flex items-center gap-x-2 py-[5px] px-[10px] border border-solid border-primary rounded-md font-normal text-base text-gray-600"
-				v-for="brand in brands?.filter(item => $route.query.brand_id?.includes(item.id))"
+				v-for="brand in brands?.filter(item => filteredList.includes(item.id))"
 				:key="brand.id"
 				@click="handleBrandDelete(brand.id)"
 			>
@@ -79,16 +79,10 @@
 			</button>
 		</div>
 
-		<div v-if="products?.length === 0">Hech narsa topilmadi</div>
+		<div v-if="products?.items.length === 0">Hech narsa topilmadi</div>
 		<CategoryItems v-else :active="active" />
 
-		<div class="flex items-center justify-end gap-[10px]">
-			<select
-				class="w-[172px] py-3 px-2 rounded-md border border-solid border-gray-300 max-[440px]:w-full max-sm:p-1.5"
-			>
-				<option class="font-normal text-base text-black max-sm:text-sm">10ta ko'rsatish</option>
-			</select>
-
+		<div class="flex items-center justify-end">
 			<div class="flex mr-[10px] max-sm:mr-1.5">
 				<button
 					class="border border-solid border-gray-400 py-1 px-2 max-sm:p-1 group disabled:border-gray-300"
@@ -133,10 +127,9 @@ export default {
 	data() {
 		return {
 			categoryId: this.$route.params.id.split('-').at(-1),
-			searchParams: new URL(window.location.href).searchParams,
-			fitleredBrands: getIds(new URL(window.location.href).searchParams.get('brand_id')),
-			sortBy: new URL(window.location.href).searchParams.get('sortBy'),
-			query: this.$route.query,
+			sortBy: this.$route.query.sortBy,
+			brandId: this.$route.query.brand_id,
+			filteredList: getIds(this.$route.query.brand_id),
 			active: false,
 			modalFilter: false,
 			items: [],
@@ -149,20 +142,35 @@ export default {
 			categories: state => state.categories.categories,
 			products: state => state.categories.products,
 			brands: state => state.categories.brands,
+			isLoading: state => state.categories.isLoading,
 		}),
+		fitleredBrands() {
+			return getIds(this.$route.query.brand_id)
+		},
 	},
 	methods: {
 		handleAsc({ target }) {
+			let query = { ...this.$route.query }
 			if (target.value !== 'none') {
-				this.$router.push({ query: { sortBy: target.value } })
+				query.sortBy = target.value
 			} else {
-				this.$router.push({ query: {} })
+				delete query.sortBy
 			}
+
+			if (this.$route.query.brand_id) {
+				query.brand_id = this.$route.query.brand_id
+			}
+
+			this.$router.push({ query })
 		},
 		handleBrandDelete(id) {
+			const updatedBrandIds = this.fitleredBrands.filter(item => item !== id)
+
 			this.$router.replace({
-				query: { brand_id: this.fitleredBrands.filter(item => item !== id).join(',') },
+				query: updatedBrandIds.length ? { brand_id: updatedBrandIds.join(',') } : {},
 			})
+
+			this.filteredList = updatedBrandIds
 		},
 		handleGridView() {
 			this.active = true
@@ -196,11 +204,11 @@ export default {
 		})
 	},
 	watch: {
-		$route({ params, query }) {
+		$route({ params }) {
 			this.$store.dispatch('productsWithBrandsId', {
 				category_id: params.id.split('-').at(-1),
-				brand_arr: getIds(query.brand_id),
-				sortBy: query.sortBy,
+				brand_arr: this.fitleredBrands,
+				sortBy: this.$route.query.sortBy,
 				page: this.currentPage,
 				limit: this.itemPerPage,
 			})
@@ -214,6 +222,9 @@ export default {
 				page: this.currentPage,
 				limit: this.itemPerPage,
 			})
+		},
+		'$route.query.brand_id'(newQuery) {
+			this.filteredList = getIds(newQuery)
 		},
 	},
 }

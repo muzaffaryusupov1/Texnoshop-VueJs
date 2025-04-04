@@ -1,18 +1,18 @@
+import {
+	CartPage,
+	CategoriesPage,
+	CheckoutPage,
+	HomePage,
+	NotFoundPage,
+	Product,
+	Profile,
+	SignIn,
+	SignUp,
+	WishList,
+} from '@/pages'
 import { CategoryMain } from '@/pages/categories/components'
-import NotFoundPage from '@/pages/notFound/NotFoundPage.vue'
 import ProfileOrders from '@/pages/profile/ProfileOrders.vue'
 import store from '@/store'
-import {
-	CartViews,
-	CategoryViews,
-	CheckoutViews,
-	HomeViews,
-	ProductViews,
-	SignInViews,
-	SignUpViews,
-	WishListViews,
-} from '@/views'
-import ProfileViews from '@/views/ProfileViews.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -21,22 +21,22 @@ const router = createRouter({
 		{
 			path: '/',
 			name: 'home',
-			component: HomeViews,
+			component: HomePage,
 		},
 		{
 			path: '/product/:slug',
 			name: 'product',
-			component: ProductViews,
+			component: Product,
 		},
 		{
 			path: '/cart',
 			name: 'cart',
-			component: CartViews,
+			component: CartPage,
 		},
 		{
 			path: '/category',
 			name: 'category',
-			component: CategoryViews,
+			component: CategoriesPage,
 			children: [
 				{
 					path: ':id',
@@ -47,27 +47,27 @@ const router = createRouter({
 		{
 			path: '/signin',
 			name: 'signin',
-			component: SignInViews,
+			component: SignIn,
 		},
 		{
 			path: '/signup',
 			name: 'signup',
-			component: SignUpViews,
+			component: SignUp,
 		},
 		{
 			path: '/wishlist',
 			name: 'wishlist',
-			component: WishListViews,
+			component: WishList,
 		},
 		{
 			path: '/checkout',
 			name: 'checkout',
-			component: CheckoutViews,
+			component: CheckoutPage,
 		},
 		{
 			path: '/profile',
 			name: 'profile',
-			component: ProfileViews,
+			component: Profile,
 			children: [
 				{
 					path: '/profile/orders',

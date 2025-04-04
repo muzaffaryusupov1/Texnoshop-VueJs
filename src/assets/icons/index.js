@@ -14,10 +14,12 @@ import ExitIcon from './ExitIcon.vue'
 import FacebookIcon from './FacebookIcon.vue'
 import FavouriteIcon from './FavouriteIcon.vue'
 import FilterIcon from './FilterIcon.vue'
+import GitHubIcon from './GitHubIcon.vue'
 import GridViewIcon from './GridViewIcon.vue'
 import HeartIcon from './HeartIcon.vue'
 import HomeIcon from './HomeIcon.vue'
 import InstagramIcon from './InstagramIcon.vue'
+import LinkedinIcon from './LinkedinIcon.vue'
 import ListViewIcon from './ListViewIcon.vue'
 import MessageIcon from './MessageIcon.vue'
 import MessageSmallIcon from './MessageSmallIcon.vue'
@@ -66,4 +68,6 @@ export default [
 	TelegramIcon,
 	InstagramIcon,
 	ExitIcon,
+	LinkedinIcon,
+	GitHubIcon,
 ]

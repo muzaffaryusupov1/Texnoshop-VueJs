@@ -98,8 +98,10 @@ export default {
 			if (this.isAuth) {
 				this.$router.push('/checkout')
 			} else {
-				toastify("Ro'yxatdan o'tmagansiz", 'error')
 				this.$router.push('/signin')
+				setTimeout(() => {
+					toastify("Ro'yxatdan o'tmagansiz", 'error')
+				}, 50)
 			}
 		},
 	},

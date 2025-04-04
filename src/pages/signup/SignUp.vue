@@ -21,13 +21,17 @@
 				<Input v-model="data.email" :label="'Email'" :type="'email'" />
 				<Input v-model="data.password" :label="'Parol'" :type="'password'" />
 
-				<Button type="submit">Ro'yhatdan o'tish</Button>
+				<Button :disabled="loading">
+					<div class="flex items-center justify-center" v-if="loading"><LoadingSpinner /></div>
+					<span v-else>Kirish</span>
+				</Button>
 			</form>
 		</div>
 	</div>
 </template>
 
 <script>
+import { toastify } from '@/utils/helpers'
 import { mapState } from 'vuex'
 
 export default {
@@ -47,7 +51,7 @@ export default {
 			e.preventDefault()
 
 			if (this.data.password.length < 8) {
-				console.log('Error')
+				toastify("Iltimos parolda 8ta dan ko'p belgi ishlating", 'error')
 			} else {
 				this.$store
 					.dispatch('register', this.data)

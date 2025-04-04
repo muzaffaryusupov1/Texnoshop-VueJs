@@ -78,7 +78,6 @@ const actions = {
 					.catch(err => {
 						context.commit('setLoadingEnd')
 						context.commit('setError', err.status)
-						console.log(err)
 					})
 					.finally(() => {
 						context.commit('setLoadingEnd')
@@ -100,7 +99,6 @@ const actions = {
 					resolve(response.data.token)
 				})
 				.catch(err => {
-					console.log(err)
 					context.commit('setLoadingEnd')
 					context.commit('setError', err.status)
 				})
@@ -113,7 +111,6 @@ const actions = {
 		return new Promise(resolve => {
 			AuthService.getUser()
 				.then(response => {
-					console.log(response)
 					resolve(response.data)
 				})
 				.catch(error => {

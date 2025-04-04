@@ -4,9 +4,6 @@
 			<div class="container">
 				<div class="flex items-center justify-between">
 					<div class="flex">
-						<button @click="toggleModal" class="w-7 h-7 hidden max-sm:block">
-							<MobileIcon />
-						</button>
 						<RouterLink :to="{ name: 'home' }" class="flex items-center mr-8">
 							<h2 class="text-xl text-black font-medium select-none">MuraShop</h2>
 							<img src="/images/site-icon.png" alt="site icon" class="w-6 h-6 select-none" />
@@ -18,7 +15,7 @@
 						<SearchModal v-else :products="products" :searchModal="searchModal" />
 					</div>
 
-					<div class="flex items-center gap-x-6 max-md:gap-4">
+					<div class="flex items-center gap-x-6 max-md:gap-4 max-sm:gap-1">
 						<button
 							:class="!searchModal ? 'hidden' : 'relative hidden max-md:block z-50'"
 							@click="searchModal = false"
@@ -32,46 +29,40 @@
 							<CloseIcon class="fill-white" />
 						</button>
 
-						<RouterLink v-if="isAuth" :to="{ name: 'profile' }">
+						<RouterLink v-if="isAuth" :to="{ name: 'profile' }" class="max-sm:hidden">
 							<button
-								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
+								class="flex max-md:flex-col items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
 							>
 								<span>
 									<ProfileIcon class="group-hover:fill-primary" />
 								</span>
-								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
-									Profile
-								</span>
+								<span class="font-normal text-xs group-hover:text-[#0d6efd]"></span>
 							</button>
 						</RouterLink>
 
 						<RouterLink v-else :to="{ name: 'signin' }">
 							<button
-								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
+								class="flex max-md:flex-col items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
 							>
 								<span>
 									<ProfileIcon class="group-hover:fill-primary" />
 								</span>
-								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
-									Kirish
-								</span>
+								<span class="font-normal text-xs group-hover:text-[#0d6efd]">Kirish</span>
 							</button>
 						</RouterLink>
 
 						<RouterLink :to="{ name: 'cart' }" class="max-sm:hidden">
 							<button
-								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
+								class="flex max-md:flex-col items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
 							>
 								<span>
 									<CartIcon class="group-hover:fill-primary" />
 								</span>
-								<span class="font-normal text-xs group-hover:text-[#0d6efd] max-md:hidden">
-									Savatcha
-								</span>
+								<span class="font-normal text-xs group-hover:text-[#0d6efd]"> Savatcha </span>
 							</button>
 						</RouterLink>
 
-						<RouterLink :to="{ name: 'wishlist' }">
+						<RouterLink :to="{ name: 'wishlist' }" class="max-sm:hidden">
 							<button
 								class="flex items-center gap-[8px] group hover:bg-primary-light p-1 lg:p-3 transition-all ease-out duration-300"
 							>
@@ -83,6 +74,10 @@
 								</span>
 							</button>
 						</RouterLink>
+
+						<button @click="toggleModal" class="w-7 h-7 hidden max-sm:block">
+							<MobileIcon />
+						</button>
 					</div>
 
 					<Teleport to="#modal">
@@ -126,6 +121,7 @@ export default {
 			categories: state => state.categories.categories,
 			products: state => state.products.data,
 			isAuth: state => state.auth.isAuth,
+			user: state => state.auth.user,
 		}),
 	},
 	mounted() {

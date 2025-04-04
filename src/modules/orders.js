@@ -42,7 +42,6 @@ const actions = {
 					resolve(response.data)
 				})
 				.catch(error => {
-					console.log(error)
 					context.commit('loadingEnd')
 				})
 				.finally(() => {
@@ -63,7 +62,6 @@ const actions = {
 				})
 				.catch(error => {
 					context.commit('getUserOrdersFailure')
-					console.log(error)
 				})
 		})
 	},

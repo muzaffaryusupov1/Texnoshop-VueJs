@@ -14,5 +14,9 @@ import { CategorySidebar } from './components'
 
 export default {
 	components: { CategorySidebar },
+	mounted() {
+		this.$store.dispatch('categories')
+		this.$store.dispatch('brands')
+	},
 }
 </script>

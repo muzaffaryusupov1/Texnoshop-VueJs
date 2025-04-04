@@ -43,33 +43,37 @@ export default {
 		return {
 			readMore: false,
 			brand_id: this.$route.query.brand_id,
-			filteredList: getIds(this.$route.query.brand_id),
 		}
 	},
 	computed: {
 		...mapState({
 			brands: state => state.categories.brands,
 		}),
+		filteredList() {
+			return getIds(this.$route.query.brand_id)
+		},
 	},
 	methods: {
 		showToggle() {
 			this.readMore = !this.readMore
 		},
 		handleBrand(id, { target }) {
-			console.log(id)
+			const current = getIds(this.$route.query.brand_id)
+
+			let updated = []
+
 			if (target.checked) {
-				this.$router.replace({
-					query: { brand_id: id },
-				})
+				updated = [...new Set([...current, id])]
+			} else {
+				updated = current.filter(item => item !== id)
 			}
-			if (target.checked == false) {
-				this.$router.replace({ query: { brand_id: id } })
-			}
-			if (this.brand_id && target.checked) {
-				this.$router.replace({
-					query: { brand_id: this.brand_id + ',' + id },
-				})
-			}
+
+			this.$router.replace({
+				query: {
+					...this.$route.query,
+					brand_id: updated.join(','),
+				},
+			})
 		},
 	},
 	watch: {

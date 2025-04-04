@@ -7,7 +7,7 @@
 		></div>
 		<div
 			class="absolute top-0 w-[300px] max-[420px]:w-72 h-full bg-white duration-200 ease-out"
-			:class="modal ? 'left-0' : '-left-[100%]'"
+			:class="modal ? 'right-0' : '-right-[100%]'"
 		>
 			<button
 				class="absolute top-5 right-5 p-1 border border-solid border-gray-500 rounded-md group active:border-black z-30"
